@@ -1,0 +1,97 @@
+#	lean_name	group	manuscript_reference	relation	note
+1	HardSphereB5.Lean.Geometry.lensVolFormula	Geometry	A: after sec:lens; B: eq:b5-geometry-8-4 [step B5.10]	same	
+2	HardSphereB5.Lean.Geometry.pathFaceQ_pos	Geometry	B: eq:b5-geometry-2-5 [step B5.10]	same	
+3	HardSphereB5.Lean.Geometry.threeBallVolume	Geometry	B: eq:b5-geometry-1-3 [step B5.10]; B: eq:b5-geometry-5 [step B5.10]	same	
+4	HardSphereB5.SphericalCrofton.AB_chain	SphericalCrofton	B: eq:crofton-proof-5-13, eq:crofton-proof-5-14 [step B7.2]	same	
+5	HardSphereB5.SphericalCrofton.capInter_isRegularRegionCrofton	SphericalCrofton	A: after lem:crofton; B: after eq:crofton-proof-1-1 [step B7.2]	same	
+6	HardSphereB5.SphericalCrofton.chord_length_integral	SphericalCrofton	B: eq:crofton-proof-1-3 [step B7.2]	Lean stronger	Same identity (the chord-length integral over the great circles meeting the region in positive length equals pi times its area); proved in Lean for every regular spherical region (compact, geodesically convex, contained in a closed hemisphere, boundary a finite union of regular C^2 arcs), a class that contains the finite cap intersections to which the manuscript applies it.
+7	HardSphereB5.SphericalCrofton.chord_representation	SphericalCrofton	B: eq:crofton-proof-2-1, eq:crofton-proof-2-2 [step B7.2]	Lean stronger	Same representation of the pair integral as the chord-kernel integral over the great circles meeting the region in positive length; proved in Lean for every regular spherical region (compact, geodesically convex, contained in a closed hemisphere, boundary a finite union of regular C^2 arcs), a class that contains the finite cap intersections to which the manuscript applies it.
+8	HardSphereB5.SphericalCrofton.circInt_isometry_invariant	SphericalCrofton	B: after eq:crofton-proof-7-7 [step B7.2]	same	
+9	HardSphereB5.SphericalCrofton.coarea_transport	SphericalCrofton	B: eq:crofton-proof-6-5 [step B7.2]; B: eq:crofton-proof-6-11 [step B7.2]	same	
+10	HardSphereB5.SphericalCrofton.crofton_decomposition	SphericalCrofton	A: lem:crofton; B: eq:crofton-proof-2-6, eq:crofton-proof-2-7 [step B7.2]	Lean stronger	Same decomposition (area term, perimeter term, and a remainder over the great circles whose intersection with the region has length strictly between 0 and pi/3); proved in Lean for every regular spherical region (compact, geodesically convex, contained in a closed hemisphere, boundary a finite union of regular C^2 arcs), a class that contains the finite cap intersections to which the manuscript applies it.
+11	HardSphereB5.SphericalCrofton.cross_arc_by_parts	SphericalCrofton	B: eq:crofton-proof-5-13 [step B7.2]	same	
+12	HardSphereB5.SphericalCrofton.cutoff_order_two	SphericalCrofton	B: eq:crofton-proof-2-9 [step B7.2]	same	
+13	HardSphereB5.SphericalCrofton.definition_chain	SphericalCrofton	B: eq:crofton-proof-4-6 [step B7.2]	same	
+14	HardSphereB5.SphericalCrofton.flat_measure_general	SphericalCrofton	B: eq:crofton-proof-7-6 [step B7.2]	same	
+15	HardSphereB5.SphericalCrofton.flat_measure_reflection_even	SphericalCrofton	B: eq:crofton-proof-7-7 [step B7.2]	same	
+16	HardSphereB5.SphericalCrofton.flat_measure_target	SphericalCrofton	B: eq:crofton-proof-7-8, eq:crofton-proof-7-9 [step B7.2]	same	
+17	HardSphereB5.SphericalCrofton.hit_mass	SphericalCrofton	B: eq:crofton-proof-1-4 [step B7.2]	Lean stronger	Same identity (the measure of the great circles meeting the region in positive length equals its perimeter); proved in Lean for every regular spherical region (compact, geodesically convex, contained in a closed hemisphere, boundary a finite union of regular C^2 arcs), a class that contains the finite cap intersections to which the manuscript applies it.
+18	HardSphereB5.SphericalCrofton.kernel_constants	SphericalCrofton	B: after eq:crofton-proof-2-3 [step B7.2]; B: eq:crofton-proof-2-8 [step B7.2]	same	
+19	HardSphereB5.SphericalCrofton.kernel_split	SphericalCrofton	B: eq:crofton-proof-2-4, eq:crofton-proof-2-5 [step B7.2]	same	
+20	HardSphereB5.SphericalCrofton.literal_crofton_false	SphericalCrofton	A: after lem:crofton; B: after eq:crofton-proof-7-13 [step B7.2]	no printed counterpart	Counterexample: for a cap of angular radius pi/6 the decomposition fails when missed great circles are given chord length 0; it records why the remainder is restricted to great circles meeting the region in positive length.
+21	HardSphereB5.SphericalCrofton.literal_remainder_excess	SphericalCrofton	A: after lem:crofton	Lean stronger	The manuscript remarks that giving the missed great circles chord length 0 would add f(0) times their measure; Lean states this excess explicitly as f(0) * (2*pi - perimeter), proved in Lean for every regular spherical region (compact, geodesically convex, contained in a closed hemisphere, boundary a finite union of regular C^2 arcs), a class that contains the finite cap intersections to which the manuscript applies it.
+22	HardSphereB5.SphericalCrofton.near_as_spherical	SphericalCrofton	B: eq:crofton-proof-3-7, eq:crofton-proof-3-8 [step B7.2]	same	
+23	HardSphereB5.SphericalCrofton.phiK_nonneg	SphericalCrofton	B: after eq:crofton-proof-2-9 [step B7.2]	same	
+24	HardSphereB5.SphericalCrofton.primitive_explicit	SphericalCrofton	B: eq:crofton-proof-5-7 [step B7.2]	same	
+25	HardSphereB5.SphericalCrofton.rho_rational	SphericalCrofton	B: eq:crofton-proof-5-10 [step B7.2]; A: after prop:santalo	Lean stronger	Same rational form of f'(delta)/(1 - cos^2 delta); the manuscript uses it below the cutoff pi/3, while Lean states it for every real delta (where sin delta = 0, both sides are 0 under Lean's division-by-zero convention).
+26	HardSphereB5.SphericalCrofton.rho_squared_distance	SphericalCrofton	B: eq:crofton-proof-7-10 [step B7.2]	same	
+27	HardSphereB5.SphericalCrofton.Rsame_label_symmetry	SphericalCrofton	B: eq:crofton-proof-4-9 [step B7.2]	same	
+28	HardSphereB5.SphericalCrofton.sigma_axis_cases	SphericalCrofton	B: after eq:crofton-proof-3-6 [step B7.2]; B: after eq:crofton-proof-4-4 [step B7.2]	same	
+29	HardSphereB5.SphericalCrofton.sigma_support	SphericalCrofton	B: eq:crofton-proof-3-5 [step B7.2]	same	
+30	HardSphereB5.SphericalCrofton.spherical_remainder_split	SphericalCrofton	B: eq:crofton-proof-4-4 [step B7.2]	same	
+31	HardSphereB5.Lean.Geometry.PathCore.adjacent_unit_halfwidths	Geometry.PathCore	B: after subsec:path-record-families [step B8.69]	Lean weaker	Lean proves only the pointwise equality of the two unit-side halfwidths within each of the two adjacent faces; the manuscript's integrated equality of all four occurrences also uses reflection between the faces and is not part of this statement.
+32	HardSphereB5.Lean.Geometry.PathCore.Aface_eq_poly	Geometry.PathCore	B: eq:b5-geometry-2-2, eq:b5-geometry-2-3 [step B5.10]	same	
+33	HardSphereB5.Lean.Geometry.PathCore.apex_position_contraction	Geometry.PathCore	B: after eq:b5-geometry-8-11 [step B5.10]	same	
+34	HardSphereB5.Lean.Geometry.PathCore.bulk_apex_anchor	Geometry.PathCore	B: eq:b5-geometry-8-11 [step B5.10]	same	
+35	HardSphereB5.Lean.Geometry.PathCore.bulk_incidence	Geometry.PathCore	B: after eq:b5-geometry-1-3 [step B5.10]; B: after eq:b5-geometry-2-4 [step B5.10]; B: after eq:b5-geometry-3-3 [step B5.10]	same	
+36	HardSphereB5.Lean.Geometry.PathCore.circumcenter_unique	Geometry.PathCore	B: eq:b5-geometry-2-1 [step B5.10]	same	
+37	HardSphereB5.Lean.Geometry.PathCore.circumradius_sq	Geometry.PathCore	B: eq:b5-geometry-2-1 [step B5.10]	Lean weaker	Lean proves that a point at the stated squared distance from all four centres exists, not that it is unique; uniqueness is the separate statement circumcenter_unique.
+38	HardSphereB5.Lean.Geometry.PathCore.common_pair_halfwidth_sum	Geometry.PathCore	B: after eq:b5-geometry-6-2 [step B5.10]	same	
+39	HardSphereB5.Lean.Geometry.PathCore.coordinate_realization	Geometry.PathCore	B: after geom:circumcentres [step B5.10]	same	
+40	HardSphereB5.Lean.Geometry.PathCore.divergence_path	Geometry.PathCore	B: eq:b5-geometry-8-1 [step B5.10]	same	
+41	HardSphereB5.Lean.Geometry.PathCore.equal_sliver_halves	Geometry.PathCore	B: after subsec:path-record-families [step B8.69]; B: after eq:path-hermite [step B8.25]; B: after eq:b5-geometry-28-1 [step B5.10]	same	
+42	HardSphereB5.Lean.Geometry.PathCore.face_circumcenter_identities	Geometry.PathCore	B: after eq:b5-geometry-2-1 [step B5.10]; B: eq:b5-geometry-8-8 [step B5.10]	same	
+43	HardSphereB5.Lean.Geometry.PathCore.face_circumradius_certificate	Geometry.PathCore	B: eq:b5-geometry-2-2 [step B5.10]	same	
+44	HardSphereB5.Lean.Geometry.PathCore.labeled_patch_continuous_distinct	Geometry.PathCore	B: after geom:walls [step B5.10]	same	
+45	HardSphereB5.Lean.Geometry.PathCore.midpoint_values	Geometry.PathCore	B: after geom:patch-count [step B5.10]	Lean weaker	Lean proves the four squared distances from the midpoint only; the manuscript's bounds (less than 3/4) and the open ball about the midpoint inside the body are not part of this statement.
+46	HardSphereB5.Lean.Geometry.PathCore.near_arc_inventory	Geometry.PathCore	B: after subsec:path-record-families [step B8.69]	same	
+47	HardSphereB5.Lean.Geometry.PathCore.near_common_pair_acute_obtuse	Geometry.PathCore	B: after eq:b5-geometry-6-2 [step B5.10]	same	
+48	HardSphereB5.Lean.Geometry.PathCore.near_dihedral_identity	Geometry.PathCore	B: after eq:b5-geometry-6-2 [step B5.10]	same	
+49	HardSphereB5.Lean.Geometry.PathCore.near_face_inventory	Geometry.PathCore	B: after subsec:path-record-families [step B8.69]	same	
+50	HardSphereB5.Lean.Geometry.PathCore.near_moving_point_width	Geometry.PathCore	B: eq:b5-geometry-6-3 [step B5.10]	same	
+51	HardSphereB5.Lean.Geometry.PathCore.near_pair23_halfwidths_acute	Geometry.PathCore	B: after eq:b5-geometry-6-3 [step B5.10]	same	
+52	HardSphereB5.Lean.Geometry.PathCore.near_selector_certificates	Geometry.PathCore	B: eq:b5-geometry-6-4e, eq:b5-geometry-6-4f [step B5.10]	Lean weaker	Lean proves the displayed polynomial identities only; the positivity conclusions the manuscript attaches to them are not part of this statement (the sign conclusions are stated separately by other selector statements).
+53	HardSphereB5.Lean.Geometry.PathCore.near_selector_counts	Geometry.PathCore	B: after subsec:near-selector [step B5.10]; B: eq:b5-geometry-6-4d [step B5.10]	same	
+54	HardSphereB5.Lean.Geometry.PathCore.near_selector_factorization	Geometry.PathCore	B: eq:b5-geometry-6-4a, eq:b5-geometry-6-4b [step B5.10]	same	
+55	HardSphereB5.Lean.Geometry.PathCore.near_selector_sliver_order	Geometry.PathCore	B: eq:b5-geometry-6-4c [step B5.10]	same	
+56	HardSphereB5.Lean.Geometry.PathCore.near_selector_wall_bulk	Geometry.PathCore	B: after eq:b5-geometry-6-4d [step B5.10]; B: after eq:b5-geometry-6-4f [step B5.10]	same	
+57	HardSphereB5.Lean.Geometry.PathCore.no_near_sliver_on_diagonal	Geometry.PathCore	B: after eq:b5-geometry-1-4 [step B5.10]; B: after geom:walls [step B5.10]	same	
+58	HardSphereB5.Lean.Geometry.PathCore.no_sliver_at_s_one	Geometry.PathCore	B: eq:b5-geometry-4-1 [step B5.10]	same	
+59	HardSphereB5.Lean.Geometry.PathCore.obtuse_point_values	Geometry.PathCore	B: after eq:b5-geometry-6-2 [step B5.10]	same	
+60	HardSphereB5.Lean.Geometry.PathCore.obtuse_sentence_counterexample	Geometry.PathCore	B: after eq:b5-geometry-6-2 [step B5.10]	same	
+61	HardSphereB5.Lean.Geometry.PathCore.pair_arc_normalizer	Geometry.PathCore	B: eq:b5-geometry-6-2 [step B5.10]; B: after eq:b5-geometry-8-8 [step B5.10]	same	
+62	HardSphereB5.Lean.Geometry.PathCore.pair_replacement_body	Geometry.PathCore	B: after eq:b5-geometry-5 [step B5.10]	same	
+63	HardSphereB5.Lean.Geometry.PathCore.pair_replacement_conditional	Geometry.PathCore	B: after eq:b5-geometry-5 [step B5.10]	same	
+64	HardSphereB5.Lean.Geometry.PathCore.pair_replacement_unrestricted_false	Geometry.PathCore	B: after eq:b5-geometry-5 [step B5.10]	no printed counterpart	Counterexample (equilateral triangle with squared side 7/2): without its stated hypotheses the pair replacement fails; it records why the manuscript's replacement needs them.
+65	HardSphereB5.Lean.Geometry.PathCore.pair_width	Geometry.PathCore	B: eq:b5-geometry-28-1 [step B5.10]; B: after eq:b5-geometry-6-2 [step B5.10]	same	
+66	HardSphereB5.Lean.Geometry.PathCore.positive_volume_active_patches	Geometry.PathCore	B: after eq:b5-geometry-1-3 [step B5.10]; B: eq:b5-geometry-3-2 [step B5.10]	same	
+67	HardSphereB5.Lean.Geometry.PathCore.Qface_eq_poly	Geometry.PathCore	B: eq:b5-geometry-2-3 [step B5.10]	same	
+68	HardSphereB5.Lean.Geometry.PathCore.raw_arc_decompositions_exist	Geometry.PathCore	B: eq:b5-geometry-8-6E [step B5.10]; B: after eq:b5-geometry-6-2 [step B5.10]	no printed counterpart	At a generic point, Lean asserts that the surviving set on each of the six pair circles decomposes into finitely many closed intervals; the manuscript uses a sum over arc components in the endpoint volume formula without stating this finite decomposition separately.
+69	HardSphereB5.Lean.Geometry.PathCore.raw_endpoint_contraction	Geometry.PathCore	B: eq:b5-geometry-8-6E [step B5.10]; B: after subsec:path-record-families [step B8.69]	same	
+70	HardSphereB5.Lean.Geometry.PathCore.realizable	Geometry.PathCore	B: after geom:circumcentres [step B5.10]	Lean weaker	Lean proves only that a configuration exists for every admissible parameter value; this statement alone does not classify all configurations (the classification is realizable_classification together with coordinate_realization).
+71	HardSphereB5.Lean.Geometry.PathCore.retained_vertex_count	Geometry.PathCore	B: eq:b5-geometry-3-3 [step B5.10]	same	
+72	HardSphereB5.Lean.Geometry.PathCore.sliver_incidence	Geometry.PathCore	B: after eq:b5-geometry-1-3 [step B5.10]; B: after eq:b5-geometry-3-3 [step B5.10]	same	
+73	HardSphereB5.Lean.Geometry.PathCore.sliver_lens_covered	Geometry.PathCore	B: after geom:coverage [step B5.10]	same	
+74	HardSphereB5.Lean.Geometry.PathCore.sliver_patch_valuation	Geometry.PathCore	B: eq:b5-geometry-5-1, eq:b5-geometry-5-2 [step B5.10]	same	
+75	HardSphereB5.Lean.Geometry.PathCore.sliver_table	Geometry.PathCore	B: eq:b5-geometry-1-4 [step B5.10]	same	
+76	HardSphereB5.Lean.Geometry.PathCore.sliver_volume	Geometry.PathCore	B: eq:b5-geometry-6 [step B5.10]	same	
+77	HardSphereB5.Lean.Geometry.PathCore.support_factor_identities	Geometry.PathCore	B: after geom:circumcentres [step B5.10]	Lean weaker	Lean proves the two polynomial identities only; the positivity the manuscript draws from them and the conclusion 0 < s < 3 are not part of this statement (0 < s < 3 is stated in tetrahedron_metric).
+78	HardSphereB5.Lean.Geometry.PathCore.tetrahedron_metric	Geometry.PathCore	B: after geom:circumcentres [step B5.10]	same	
+79	HardSphereB5.Lean.Geometry.PathCore.triple_patch_area	Geometry.PathCore	B: eq:b5-geometry-7A [step B5.10]	same	
+80	HardSphereB5.Lean.Geometry.PathCore.triple_patch_moment	Geometry.PathCore	B: eq:b5-geometry-7M [step B5.10]	same	
+81	HardSphereB5.Lean.Geometry.PathCore.triple_patch_moment_scalar	Geometry.PathCore	B: eq:b5-geometry-7 [step B5.10]	same	
+82	HardSphereB5.Lean.Geometry.PathCore.triple_retention_test	Geometry.PathCore	B: eq:b5-geometry-2-2 [step B5.10]; B: eq:b5-geometry-2-4 [step B5.10]	same	
+83	HardSphereB5.Lean.Geometry.PathCore.volume_continuous	Geometry.PathCore	B: after geom:walls [step B5.10]	same	
+84	HardSphereB5.Lean.Geometry.PathCore.walls_null	Geometry.PathCore	B: after geom:walls [step B5.10]; B: after eq:b5-geometry-6-4d [step B5.10]	same	
+85	HardSphereB5.Lean.Geometry.PathCore.walls_pathMeasure_null	Geometry.PathCore	B: after geom:walls [step B5.10]	same	
+86	HardSphereB5.Lean.Geometry.PathCore.weighted_apex_coefficient	Geometry.PathCore	B: eq:b5-geometry-8-10 [step B5.10]; B: after eq:path-hermite [step B8.25]	same	
+87	HardSphereB5.Lean.Geometry.PathCore.bulk_patch_area	Geometry.PathCore	B: eq:b5-geometry-8A [step B5.10]	same	
+88	HardSphereB5.Lean.Geometry.PathCore.bulk_patch_moment	Geometry.PathCore	B: eq:b5-geometry-8M [step B5.10]	same	
+89	HardSphereB5.Lean.Geometry.PathCore.bulk_volume	Geometry.PathCore	B: eq:b5-geometry-4 [step B5.10]	same	
+90	HardSphereB5.Lean.Geometry.PathCore.near_volume_inventory	Geometry.PathCore	B: after subsec:path-record-families [step B8.69]	same	
+91	HardSphereB5.Lean.Geometry.PathCore.normal_form_patch	Geometry.PathCore	B: eq:b5-geometry-9-2 [step B5.10]	same	
+92	HardSphereB5.Lean.Geometry.PathCore.normal_form_volume	Geometry.PathCore	B: eq:b5-geometry-9-1 [step B5.10]	same	
+93	HardSphereB5.Lean.Geometry.PathCore.raw_endpoint_volume	Geometry.PathCore	B: eq:b5-geometry-8-6E [step B5.10]	same	
+94	HardSphereB5.Lean.Geometry.PathCore.weighted_channel_normal_form	Geometry.PathCore	B: eq:path-patches [step B8.4]; B: after eq:path-hermite [step B8.25]	same	
+95	HardSphereB5.Lean.Geometry.PathCore.pair_replacement_patch_ae	Geometry.PathCore	B: after eq:b5-geometry-5 [step B5.10]	same	
+96	HardSphereB5.Lean.Geometry.PathCore.realizable_classification	Geometry.PathCore	B: after geom:circumcentres [step B5.10]	same	
