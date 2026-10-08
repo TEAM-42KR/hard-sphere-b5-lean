@@ -1,0 +1,996 @@
+HardSphereB5Lean.lensVolFormula : ∀ (l : ℝ),
+  0 ≤ l → l ≤ 2 → HardSphereB5.Lean.lensVol l = Real.pi / 12 * (2 - l) ^ 2 * (4 + l)
+HardSphereB5Lean.threeBallVolume : ∀ (c : Fin 4 → HardSphereB5.Lean.Pt) (X Y s : ℝ),
+  dist (c 0) (c 1) ^ 2 = 1 →
+    dist (c 0) (c 2) ^ 2 = 1 →
+      dist (c 0) (c 3) ^ 2 = Y →
+        dist (c 1) (c 2) ^ 2 = X →
+          dist (c 1) (c 3) ^ 2 = 1 →
+            dist (c 2) (c 3) ^ 2 = s →
+              0 < X →
+                X < 1 →
+                  0 < Y →
+                    Y < 1 →
+                      0 < -s ^ 2 + s * X * Y + 2 * s - X ^ 2 * Y - X * Y ^ 2 + 3 * X * Y - 1 →
+                        ∀ (i j k : Fin 4),
+                          i ≠ j →
+                            i ≠ k →
+                              j ≠ k →
+                                have a := dist (c i) (c j) ^ 2;
+                                have b := dist (c i) (c k) ^ 2;
+                                have cc := dist (c j) (c k) ^ 2;
+                                have Q := 4 * a * b - (a + b - cc) ^ 2 - a * b * cc;
+                                have g := fun d => d - d ^ 3 / 12;
+                                (MeasureTheory.volume
+                                      (Metric.closedBall (c i) 1 ∩ Metric.closedBall (c j) 1 ∩
+                                        Metric.closedBall (c k) 1)).toReal =
+                                  2 * Real.pi -
+                                        2 / 3 *
+                                          ({ re := 2 * (a + b - cc) - a * b, im := 2 * √Q }.arg +
+                                              { re := 2 * (a + cc - b) - a * cc, im := 2 * √Q }.arg +
+                                            { re := 2 * (b + cc - a) - b * cc, im := 2 * √Q }.arg) -
+                                      (g √a * { re := √a * (b + cc - a), im := 2 * √Q }.arg +
+                                          g √b * { re := √b * (a + cc - b), im := 2 * √Q }.arg +
+                                        g √cc * { re := √cc * (a + b - cc), im := 2 * √Q }.arg) +
+                                    √Q / 6
+HardSphereB5Lean.pathFaceQ_pos : ∀ (c : Fin 4 → HardSphereB5.Lean.Pt) (X Y s : ℝ),
+  dist (c 0) (c 1) ^ 2 = 1 →
+    dist (c 0) (c 2) ^ 2 = 1 →
+      dist (c 0) (c 3) ^ 2 = Y →
+        dist (c 1) (c 2) ^ 2 = X →
+          dist (c 1) (c 3) ^ 2 = 1 →
+            dist (c 2) (c 3) ^ 2 = s →
+              0 < X →
+                X < 1 →
+                  0 < Y →
+                    Y < 1 →
+                      0 < -s ^ 2 + s * X * Y + 2 * s - X ^ 2 * Y - X * Y ^ 2 + 3 * X * Y - 1 →
+                        ∀ (i j k : Fin 4),
+                          i ≠ j →
+                            i ≠ k →
+                              j ≠ k →
+                                0 <
+                                  4 * dist (c i) (c j) ^ 2 * dist (c i) (c k) ^ 2 -
+                                      (dist (c i) (c j) ^ 2 + dist (c i) (c k) ^ 2 - dist (c j) (c k) ^ 2) ^ 2 -
+                                    dist (c i) (c j) ^ 2 * dist (c i) (c k) ^ 2 * dist (c j) (c k) ^ 2
+HardSphereB5Lean.kernel_constants : HardSphereB5.SphericalCrofton.alphaK HardSphereB5.SphericalCrofton.Kern.one = 1 ∧
+  HardSphereB5.SphericalCrofton.bK HardSphereB5.SphericalCrofton.Kern.one = √3 - Real.pi / 3 ∧
+    HardSphereB5.SphericalCrofton.alphaK HardSphereB5.SphericalCrofton.Kern.cos = 3 / 4 ∧
+      HardSphereB5.SphericalCrofton.bK HardSphereB5.SphericalCrofton.Kern.cos = √3 / 8 + Real.pi / 12 ∧
+        ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+          HardSphereB5.SphericalCrofton.cA f = Real.pi * HardSphereB5.SphericalCrofton.alphaK f ∧
+            HardSphereB5.SphericalCrofton.cP f = HardSphereB5.SphericalCrofton.bK f
+HardSphereB5Lean.kernel_split : ∀ (f : HardSphereB5.SphericalCrofton.Kern) (L : ℝ),
+  0 ≤ L →
+    L ≤ Real.pi →
+      HardSphereB5.SphericalCrofton.kK f L =
+        HardSphereB5.SphericalCrofton.alphaK f * L - HardSphereB5.SphericalCrofton.bK f +
+          if L < Real.pi / 3 then HardSphereB5.SphericalCrofton.phiK f L else 0
+HardSphereB5Lean.cutoff_order_two : ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+  HardSphereB5.SphericalCrofton.phiK f (Real.pi / 3) = 0 ∧
+    deriv (HardSphereB5.SphericalCrofton.phiK f) (Real.pi / 3) = 0 ∧
+      ∀ (L : ℝ),
+        deriv (deriv (HardSphereB5.SphericalCrofton.phiK f)) L =
+          2 * HardSphereB5.SphericalCrofton.wK f (Real.cos L) * Real.sin L
+HardSphereB5Lean.phiK_nonneg : ∀ (f : HardSphereB5.SphericalCrofton.Kern) (L : ℝ),
+  0 ≤ L → L ≤ Real.pi / 3 → 0 ≤ HardSphereB5.SphericalCrofton.phiK f L
+HardSphereB5Lean.primitive_explicit : ∀ (d : ℝ),
+  HardSphereB5.SphericalCrofton.Pprim HardSphereB5.SphericalCrofton.Kern.one d =
+      d ^ 2 / 2 + 2 * Real.cos d - 2 + (√3 - Real.pi / 3) * d ∧
+    HardSphereB5.SphericalCrofton.Pprim HardSphereB5.SphericalCrofton.Kern.cos d =
+      (Real.pi / 12 + √3 / 8) * d - d ^ 2 / 8 + Real.cos (2 * d) / 8 - 1 / 8
+HardSphereB5Lean.rho_rational : ∀ (f : HardSphereB5.SphericalCrofton.Kern) (δ : ℝ),
+  deriv (HardSphereB5.SphericalCrofton.phiK f) δ / (1 - Real.cos δ ^ 2) =
+    HardSphereB5.SphericalCrofton.rhoK f (Real.cos δ)
+HardSphereB5Lean.sigma_axis_cases : (∀ (t : ℝ),
+    0 < t → t < 1 → HardSphereB5.SphericalCrofton.SigmaD (t • HardSphereB5.Lean.e) = ∅) ∧
+  (HardSphereB5.SphericalCrofton.SigmaD 0 = SphereGeom.cap HardSphereB5.Lean.e (1 / 2) ∧
+      HardSphereB5.SphericalCrofton.arcA 0 = ∅ ∧
+        HardSphereB5.SphericalCrofton.arcB 0 = {u | ‖u‖ = 1 ∧ inner ℝ HardSphereB5.Lean.e u = 1 / 2}) ∧
+    HardSphereB5.SphericalCrofton.SigmaD HardSphereB5.Lean.e = SphereGeom.cap (-HardSphereB5.Lean.e) (1 / 2) ∧
+      HardSphereB5.SphericalCrofton.arcB HardSphereB5.Lean.e = ∅ ∧
+        HardSphereB5.SphericalCrofton.arcA HardSphereB5.Lean.e =
+          {u | ‖u‖ = 1 ∧ inner ℝ (-HardSphereB5.Lean.e) u = 1 / 2}
+HardSphereB5Lean.near_as_spherical : ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+  HardSphereB5.SphericalCrofton.Jnear f =
+    ∫ (D : HardSphereB5.Lean.Pt) in HardSphereB5.SphericalCrofton.LamC,
+      HardSphereB5.SphericalCrofton.Ff f (HardSphereB5.SphericalCrofton.SigmaD D)
+HardSphereB5Lean.circInt_isometry_invariant : ∀ (p p' : HardSphereB5.Lean.Pt)
+  (R : HardSphereB5.Lean.Pt ≃ₗᵢ[ℝ] HardSphereB5.Lean.Pt),
+  R HardSphereB5.Lean.e = HardSphereB5.Lean.e →
+    HardSphereB5.SphericalCrofton.circInt (R p) (R p') = HardSphereB5.SphericalCrofton.circInt p p'
+HardSphereB5Lean.rho_squared_distance : ∀ (s : ℝ),
+  0 < s →
+    s < 4 →
+      HardSphereB5.SphericalCrofton.rhoK HardSphereB5.SphericalCrofton.Kern.one (1 - s / 2) =
+          4 * (s - 1) / (s * (4 - s)) ∧
+        HardSphereB5.SphericalCrofton.rhoK HardSphereB5.SphericalCrofton.Kern.cos (1 - s / 2) =
+          (s - 1) * (3 - s) / (s * (4 - s))
+@HardSphereB5Lean.Aface_eq_poly : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∀ (l : Fin 4), HardSphereB5.Lean.Geometry.PathCore.Aface c l = HardSphereB5.Lean.Geometry.PathCore.Apoly X Y s l
+@HardSphereB5Lean.Qface_eq_poly : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∀ (l : Fin 4), HardSphereB5.Lean.Geometry.PathCore.Qface c l = HardSphereB5.Lean.Geometry.PathCore.Qpoly X Y s l
+@HardSphereB5Lean.adjacent_unit_halfwidths : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.betaA c 0 1 2 = HardSphereB5.Lean.Geometry.PathCore.betaA c 0 2 1 ∧
+      HardSphereB5.Lean.Geometry.PathCore.betaA c 0 1 3 = HardSphereB5.Lean.Geometry.PathCore.betaA c 1 3 0
+@HardSphereB5Lean.apex_position_contraction : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    (∑ i, ∑ l, if l ≠ i then inner ℝ (c i) (HardSphereB5.Lean.Geometry.PathCore.apexTerm c i l) else 0) =
+      -√(HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s) / 4
+@HardSphereB5Lean.bulk_apex_anchor : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∀ (i l r : Fin 4),
+      i ≠ l →
+        inner ℝ (c r - c i) (HardSphereB5.Lean.Geometry.PathCore.apexTerm c i l) =
+          if r = l then
+            √(HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s) *
+                HardSphereB5.Lean.Geometry.PathCore.Lapex c i (HardSphereB5.Lean.Geometry.PathCore.oth1 i l)
+                  (HardSphereB5.Lean.Geometry.PathCore.oth2 i l) /
+              8
+          else 0
+@HardSphereB5Lean.bulk_incidence : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s →
+      (∀ (l : Fin 4), HardSphereB5.Lean.Geometry.PathCore.nRet c l = 1) ∧
+        ∀ (m : Fin 4), ∑ l ∈ Finset.univ.erase m, HardSphereB5.Lean.Geometry.PathCore.nRet c l = 3
+@HardSphereB5Lean.circumcenter_unique : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∃! O,
+      ∀ (i : Fin 4),
+        dist O (c i) ^ 2 =
+          1 - HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s / (4 * HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s)
+@HardSphereB5Lean.circumradius_sq : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∃ O,
+      ∀ (i : Fin 4),
+        dist O (c i) ^ 2 =
+          1 - HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s / (4 * HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s)
+@HardSphereB5Lean.common_pair_halfwidth_sum : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s < 0 →
+      ∀ (i j : Fin 4),
+        i ≠ j →
+          HardSphereB5.Lean.Geometry.PathCore.isCommon c i j →
+            Real.pi <
+              HardSphereB5.Lean.Geometry.PathCore.betaA c i j (HardSphereB5.Lean.Geometry.PathCore.oth1 i j) +
+                HardSphereB5.Lean.Geometry.PathCore.betaA c i j (HardSphereB5.Lean.Geometry.PathCore.oth2 i j)
+@HardSphereB5Lean.coordinate_realization : ∀ {X Y s : ℝ},
+  0 < X →
+    X < 1 →
+      0 < Y →
+        Y < 1 →
+          0 < HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s →
+            HardSphereB5.Lean.Geometry.PathCore.IsPathConfig
+                (HardSphereB5.Lean.Geometry.PathCore.canonicalCenters X Y s) X Y s ∧
+              ∃ χ,
+                0 < χ ∧
+                  χ < Real.pi ∧
+                    s =
+                        HardSphereB5.Lean.Geometry.PathCore.a0 X Y -
+                          HardSphereB5.Lean.Geometry.PathCore.b0 X Y * Real.cos χ ∧
+                      HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s =
+                        HardSphereB5.Lean.Geometry.PathCore.b0 X Y ^ 2 -
+                          (HardSphereB5.Lean.Geometry.PathCore.a0 X Y - s) ^ 2
+@HardSphereB5Lean.divergence_path : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    3 * HardSphereB5.Lean.Geometry.PathCore.vol c Finset.univ =
+        ∑ i,
+          (HardSphereB5.Lean.Geometry.PathCore.pArea c i Finset.univ +
+            inner ℝ (c i) (HardSphereB5.Lean.Geometry.PathCore.pMoment c i Finset.univ)) ∧
+      ∑ i, HardSphereB5.Lean.Geometry.PathCore.pMoment c i Finset.univ = 0
+HardSphereB5Lean.equal_sliver_halves : HardSphereB5.Lean.Geometry.PathCore.nearCorrection 0 2 =
+    HardSphereB5.Lean.Geometry.PathCore.Ssliver / 2 ∧
+  HardSphereB5.Lean.Geometry.PathCore.nearCorrection 1 3 = HardSphereB5.Lean.Geometry.PathCore.Ssliver / 2 ∧
+    HardSphereB5.Lean.Geometry.PathCore.nearCorrection 0 1 = 0 ∧
+      HardSphereB5.Lean.Geometry.PathCore.nearCorrection 1 2 = 0 ∧
+        HardSphereB5.Lean.Geometry.PathCore.nearCorrection 0 3 = 0 ∧
+          HardSphereB5.Lean.Geometry.PathCore.nearCorrection 2 3 = 0
+@HardSphereB5Lean.face_circumcenter_identities : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∀ (i j k : Fin 4),
+      i ≠ j →
+        i ≠ k →
+          j ≠ k →
+            inner ℝ (c j - c i) (HardSphereB5.Lean.Geometry.PathCore.faceCircRel c i j k) =
+                HardSphereB5.Lean.Geometry.PathCore.q c i j / 2 ∧
+              inner ℝ (c k - c i) (HardSphereB5.Lean.Geometry.PathCore.faceCircRel c i j k) =
+                  HardSphereB5.Lean.Geometry.PathCore.q c i k / 2 ∧
+                ‖HardSphereB5.Lean.Geometry.PathCore.faceCircRel c i j k‖ ^ 2 =
+                    HardSphereB5.Lean.Geometry.PathCore.q c i j * HardSphereB5.Lean.Geometry.PathCore.q c i k *
+                        HardSphereB5.Lean.Geometry.PathCore.q c j k /
+                      HardSphereB5.Lean.Geometry.PathCore.Deltaf c i j k ∧
+                  ∀ (ε : ℝ),
+                    ε = 1 ∨ ε = -1 →
+                      ∀ m ∈ {i, j, k}, dist (HardSphereB5.Lean.Geometry.PathCore.triplePoint c i j k ε) (c m) = 1
+@HardSphereB5Lean.face_circumradius_certificate : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∀ (l : Fin 4),
+      HardSphereB5.Lean.Geometry.PathCore.Apoly X Y s l ^ 2 -
+          4 * HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s * HardSphereB5.Lean.Geometry.PathCore.Qface c l =
+        -HardSphereB5.Lean.Geometry.PathCore.Deltaf c (HardSphereB5.Lean.Geometry.PathCore.faceVerts l).1
+              (HardSphereB5.Lean.Geometry.PathCore.faceVerts l).2.1
+              (HardSphereB5.Lean.Geometry.PathCore.faceVerts l).2.2 *
+          HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s
+HardSphereB5Lean.labeled_patch_continuous_distinct : ∀ (c : Fin 4 → HardSphereB5.Lean.Pt),
+  Function.Injective c →
+    ∀ (i : Fin 4),
+      ContinuousAt (fun c => HardSphereB5.Lean.Geometry.PathCore.pArea c i Finset.univ) c ∧
+        ContinuousAt (fun c => HardSphereB5.Lean.Geometry.PathCore.pMoment c i Finset.univ) c
+@HardSphereB5Lean.midpoint_values : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    have M := (1 / 2) • (c 0 + c 1);
+    dist M (c 0) ^ 2 = 1 / 4 ∧
+      dist M (c 1) ^ 2 = 1 / 4 ∧ dist M (c 2) ^ 2 = (1 + 2 * X) / 4 ∧ dist M (c 3) ^ 2 = (1 + 2 * Y) / 4
+HardSphereB5Lean.near_arc_inventory : (∑ i,
+    ∑ j, if i < j then HardSphereB5.Lean.Geometry.PathCore.nearPairArc i j else 0) =
+  4 * HardSphereB5.Lean.Geometry.PathCore.triangleSide 0 1 2 3 +
+                    2 * HardSphereB5.Lean.Geometry.PathCore.triangleSide 1 2 0 3 +
+                  2 * HardSphereB5.Lean.Geometry.PathCore.triangleSide 0 2 3 1 +
+                2 * HardSphereB5.Lean.Geometry.PathCore.triangleSide 0 3 2 1 +
+              2 * HardSphereB5.Lean.Geometry.PathCore.triangleSide 2 3 0 1 +
+            HardSphereB5.Lean.Geometry.PathCore.bulkSource 0 1 +
+          2 * HardSphereB5.Lean.Geometry.PathCore.bulkSource 0 2 +
+        2 * HardSphereB5.Lean.Geometry.PathCore.bulkSource 1 2 +
+      HardSphereB5.Lean.Geometry.PathCore.bulkSource 2 3 +
+    HardSphereB5.Lean.Geometry.PathCore.Ssliver
+@HardSphereB5Lean.near_common_pair_acute_obtuse : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    s < 1 →
+      HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s < 0 →
+        (Y < X →
+            HardSphereB5.Lean.Geometry.PathCore.betaA c 0 2 1 < Real.pi / 2 ∧
+              Real.pi / 2 < HardSphereB5.Lean.Geometry.PathCore.betaA c 0 2 3) ∧
+          (X < Y →
+            HardSphereB5.Lean.Geometry.PathCore.betaA c 1 3 0 < Real.pi / 2 ∧
+              Real.pi / 2 < HardSphereB5.Lean.Geometry.PathCore.betaA c 1 3 2)
+HardSphereB5Lean.near_dihedral_identity : ∀ (X Y s : ℝ),
+  (X * Y + (s - 1) * (X + Y) + 1 - s ^ 2) ^ 2 + 4 * s * HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s =
+    (4 * s - (1 + s - Y) ^ 2) * (4 * s * X - (X + s - 1) ^ 2)
+HardSphereB5Lean.near_face_inventory : ∑ l, HardSphereB5.Lean.Geometry.PathCore.VfaceIntegral l =
+    2 * HardSphereB5.Lean.Geometry.PathCore.Vadj + 2 * HardSphereB5.Lean.Geometry.PathCore.Vnon ∧
+  ∑ l, HardSphereB5.Lean.Geometry.PathCore.EfaceIntegral l =
+    2 * HardSphereB5.Lean.Geometry.PathCore.Eadj + 2 * HardSphereB5.Lean.Geometry.PathCore.Enon
+@HardSphereB5Lean.near_moving_point_width : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    s < 1 →
+      HardSphereB5.Lean.Geometry.PathCore.phiE c 2 3 =
+          HardSphereB5.Lean.Geometry.PathCore.atan2 (2 * √(s * HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s))
+            (X * Y + (s - 1) * (X + Y) + 1 - s ^ 2) ∧
+        (0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s →
+            HardSphereB5.Lean.Geometry.PathCore.ell c 2 3 =
+              HardSphereB5.Lean.Geometry.PathCore.atan2 (2 * √(HardSphereB5.Lean.Geometry.PathCore.Qpoly X Y s 1))
+                    (√s * (1 + Y - s)) +
+                  HardSphereB5.Lean.Geometry.PathCore.atan2 (2 * √(HardSphereB5.Lean.Geometry.PathCore.Qpoly X Y s 0))
+                    (√s * (1 + X - s)) -
+                HardSphereB5.Lean.Geometry.PathCore.phiE c 2 3) ∧
+          (HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s < 0 →
+              Y < X →
+                HardSphereB5.Lean.Geometry.PathCore.ell c 2 3 =
+                  2 *
+                    HardSphereB5.Lean.Geometry.PathCore.atan2 (2 * √(HardSphereB5.Lean.Geometry.PathCore.Qpoly X Y s 1))
+                      (√s * (1 + Y - s))) ∧
+            (HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s < 0 →
+              X < Y →
+                HardSphereB5.Lean.Geometry.PathCore.ell c 2 3 =
+                  2 *
+                    HardSphereB5.Lean.Geometry.PathCore.atan2 (2 * √(HardSphereB5.Lean.Geometry.PathCore.Qpoly X Y s 0))
+                      (√s * (1 + X - s)))
+@HardSphereB5Lean.near_pair23_halfwidths_acute : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    s < 1 →
+      HardSphereB5.Lean.Geometry.PathCore.betaA c 2 3 0 < Real.pi / 2 ∧
+        HardSphereB5.Lean.Geometry.PathCore.betaA c 2 3 1 < Real.pi / 2
+HardSphereB5Lean.near_selector_certificates : ∀ (X Y s t : ℝ),
+  HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s =
+      -Y * (4 - Y) * X ^ 2 + 2 * Y * (s + 5 - 2 * Y) * X - 3 * (s - 1) ^ 2 ∧
+    Y ^ 2 * (s + 5 - 2 * Y) ^ 2 - 3 * Y * (4 - Y) * (s - 1) ^ 2 =
+        4 * Y * (3 - Y) * HardSphereB5.Lean.Geometry.PathCore.Qpoly X Y s 1 ∧
+      HardSphereB5.Lean.Geometry.PathCore.Hpoly Y Y s =
+          (s - HardSphereB5.Lean.Geometry.PathCore.s0 Y) * (1 + 2 * Y - s) ∧
+        HardSphereB5.Lean.Geometry.PathCore.P4poly Y Y (1 - t) = (Y * (2 - Y) - t) * (Y * (6 - Y) + 3 * t) ∧
+          HardSphereB5.Lean.Geometry.PathCore.P4poly 1 Y (1 - t) =
+              Y * (1 - Y) ^ 2 * (8 - 3 * Y) + (Y * (2 - Y) - t) * (3 * (Y * (2 - Y) + t) + 2 * Y) ∧
+            HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y (HardSphereB5.Lean.Geometry.PathCore.s0 Y) =
+              -Y * (X - Y) * (X - (2 - Y) ^ 2)
+@HardSphereB5Lean.near_selector_counts : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    0 < s →
+      s < 1 →
+        HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s ≠ 0 →
+          ((HardSphereB5.Lean.Geometry.PathCore.Bminus Y s < X →
+                HardSphereB5.Lean.Geometry.PathCore.nearCounts c = (1, 1)) ∧
+              (X < HardSphereB5.Lean.Geometry.PathCore.Bminus Y s →
+                  s < HardSphereB5.Lean.Geometry.PathCore.s0 Y →
+                    HardSphereB5.Lean.Geometry.PathCore.nearCounts c = (2, 0)) ∧
+                (X < HardSphereB5.Lean.Geometry.PathCore.Bminus Y s →
+                  HardSphereB5.Lean.Geometry.PathCore.s0 Y < s →
+                    HardSphereB5.Lean.Geometry.PathCore.nearCounts c = (0, 2))) ∧
+            (HardSphereB5.Lean.Geometry.PathCore.Bminus Y s < X ∨
+              X < HardSphereB5.Lean.Geometry.PathCore.Bminus Y s ∧ s < HardSphereB5.Lean.Geometry.PathCore.s0 Y ∨
+                X < HardSphereB5.Lean.Geometry.PathCore.Bminus Y s ∧ HardSphereB5.Lean.Geometry.PathCore.s0 Y < s)
+@HardSphereB5Lean.near_selector_factorization : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    0 < s →
+      s < 1 →
+        HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s ≠ 0 →
+          HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s =
+              Y * (4 - Y) * (X - HardSphereB5.Lean.Geometry.PathCore.Bminus Y s) *
+                (HardSphereB5.Lean.Geometry.PathCore.Bplus Y s - X) ∧
+            1 < HardSphereB5.Lean.Geometry.PathCore.Bplus Y s ∧
+              (0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s ↔
+                HardSphereB5.Lean.Geometry.PathCore.Bminus Y s < X)
+@HardSphereB5Lean.near_selector_sliver_order : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    0 < s →
+      s < 1 →
+        HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s < 0 →
+          (Y < X ↔ s < HardSphereB5.Lean.Geometry.PathCore.s0 Y) ∧
+            (X < Y ↔ HardSphereB5.Lean.Geometry.PathCore.s0 Y < s)
+@HardSphereB5Lean.near_selector_wall_bulk : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    s = HardSphereB5.Lean.Geometry.PathCore.s0 Y → Y < X ∧ 0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s
+@HardSphereB5Lean.no_near_sliver_on_diagonal : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    s < 1 → X = Y → 0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s
+@HardSphereB5Lean.no_sliver_at_s_one : ∀ {X Y : ℝ},
+  0 < X → X < 1 → 0 < Y → Y < 1 → 0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y 1
+HardSphereB5Lean.obtuse_point_values : HardSphereB5.Lean.Geometry.PathCore.Hpoly (3 / 4) (1 / 4) (11 / 32) = 9 / 1024 ∧
+  HardSphereB5.Lean.Geometry.PathCore.P4poly (3 / 4) (1 / 4) (11 / 32) = -3 / 1024
+@HardSphereB5Lean.obtuse_sentence_counterexample : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c (3 / 4) (1 / 4) (11 / 32) →
+    HardSphereB5.Lean.Geometry.PathCore.isCommon c 0 2 ∧
+      HardSphereB5.Lean.Geometry.PathCore.betaA c 0 2 1 < Real.pi / 2 ∧
+        Real.pi / 2 < HardSphereB5.Lean.Geometry.PathCore.betaA c 0 2 3 ∧
+          HardSphereB5.Lean.Geometry.PathCore.ell c 0 2 =
+            2 * HardSphereB5.Lean.Geometry.PathCore.betaA c 0 2 1 +
+                2 * HardSphereB5.Lean.Geometry.PathCore.betaA c 0 2 3 -
+              2 * Real.pi
+HardSphereB5Lean.pair_arc_normalizer : ∀ (a b cc : ℝ),
+  HardSphereB5.Lean.Geometry.PathCore.DeltaT a b cc * (4 - a) =
+      a * (b + cc - a) ^ 2 + 4 * HardSphereB5.Lean.Geometry.PathCore.QT a b cc ∧
+    (2 * (a + b - cc) - a * b) ^ 2 + 4 * HardSphereB5.Lean.Geometry.PathCore.QT a b cc = a * b * (4 - a) * (4 - b)
+HardSphereB5Lean.pair_replacement_body : ∀ (x : Fin 3 → HardSphereB5.Lean.Pt),
+  AffineIndependent ℝ x →
+    dist (x 1) (x 2) ^ 2 < 4 →
+      dist (x 0) (x 1) ^ 2 ≤ 1 →
+        dist (x 0) (x 2) ^ 2 ≤ 1 →
+          dist (x 0) (x 1) ^ 2 ≤ dist (x 1) (x 2) ^ 2 ∧ dist (x 0) (x 2) ^ 2 ≤ dist (x 1) (x 2) ^ 2 →
+            HardSphereB5.Lean.Geometry.PathCore.QT (dist (x 1) (x 2) ^ 2) (dist (x 1) (x 0) ^ 2)
+                  (dist (x 2) (x 0) ^ 2) ≤
+                0 →
+              ⋂ i, Metric.closedBall (x i) 1 = Metric.closedBall (x 1) 1 ∩ Metric.closedBall (x 2) 1
+HardSphereB5Lean.pair_replacement_conditional : ∀ (x : Fin 3 → HardSphereB5.Lean.Pt),
+  AffineIndependent ℝ x →
+    dist (x 1) (x 2) ^ 2 < 4 →
+      dist (x 0) (x 1) ^ 2 ≤ 1 →
+        dist (x 0) (x 2) ^ 2 ≤ 1 →
+          dist (x 0) (x 1) ^ 2 ≤ dist (x 1) (x 2) ^ 2 ∧ dist (x 0) (x 2) ^ 2 ≤ dist (x 1) (x 2) ^ 2 →
+            HardSphereB5.Lean.Geometry.PathCore.QT (dist (x 1) (x 2) ^ 2) (dist (x 1) (x 0) ^ 2)
+                  (dist (x 2) (x 0) ^ 2) ≤
+                0 →
+              (MeasureTheory.volume (⋂ i, Metric.closedBall (x i) 1)).toReal =
+                HardSphereB5.Lean.Geometry.PathCore.V2 (dist (x 1) (x 2))
+HardSphereB5Lean.pair_replacement_unrestricted_false : ∃ x,
+  (∀ (i j : Fin 3), i ≠ j → dist (x i) (x j) ^ 2 = 7 / 2) ∧
+    HardSphereB5.Lean.Geometry.PathCore.QT (7 / 2) (7 / 2) (7 / 2) ≤ 0 ∧
+      ⋂ i, Metric.closedBall (x i) 1 = ∅ ∧
+        0 < (MeasureTheory.volume (Metric.closedBall (x 1) 1 ∩ Metric.closedBall (x 2) 1)).toReal
+@HardSphereB5Lean.pair_width : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s ≠ 0 →
+      ∀ (i j : Fin 4),
+        i ≠ j →
+          HardSphereB5.Lean.Geometry.PathCore.ell c i j =
+            (↑(HardSphereB5.Lean.Geometry.PathCore.nRet c (HardSphereB5.Lean.Geometry.PathCore.oth2 i j)) *
+                    HardSphereB5.Lean.Geometry.PathCore.betaA c i j (HardSphereB5.Lean.Geometry.PathCore.oth1 i j) +
+                  ↑(HardSphereB5.Lean.Geometry.PathCore.nRet c (HardSphereB5.Lean.Geometry.PathCore.oth1 i j)) *
+                    HardSphereB5.Lean.Geometry.PathCore.betaA c i j (HardSphereB5.Lean.Geometry.PathCore.oth2 i j) -
+                if 0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s then
+                  HardSphereB5.Lean.Geometry.PathCore.phiE c i j
+                else 0) -
+              if
+                  HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s < 0 ∧
+                    HardSphereB5.Lean.Geometry.PathCore.isCommon c i j then
+                2 * Real.pi
+              else 0
+@HardSphereB5Lean.positive_volume_active_patches : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    0 < HardSphereB5.Lean.Geometry.PathCore.vol c Finset.univ ∧
+      (∀ (i : Fin 4), 0 < HardSphereB5.Lean.Geometry.PathCore.pArea c i Finset.univ) ∧
+        ∀ (i : Fin 4), Nonempty (↑(HardSphereB5.Lean.Geometry.PathCore.patch c i) ≃ₜ ↑(Metric.closedBall 0 1))
+@HardSphereB5Lean.raw_arc_decompositions_exist : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s ≠ 0 →
+      Nonempty
+        ((e : HardSphereB5.Lean.Geometry.PathCore.PairIndex) →
+          HardSphereB5.Lean.Geometry.PathCore.PairArcDecomposition c (↑e).1 (↑e).2)
+@HardSphereB5Lean.raw_endpoint_contraction : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s ≠ 0 →
+      ∀
+        (D :
+          (e : HardSphereB5.Lean.Geometry.PathCore.PairIndex) →
+            HardSphereB5.Lean.Geometry.PathCore.PairArcDecomposition c (↑e).1 (↑e).2),
+        HardSphereB5.Lean.Geometry.PathCore.rawEndpointSum c D =
+          (∑ l, ↑(HardSphereB5.Lean.Geometry.PathCore.nRet c l) * √(HardSphereB5.Lean.Geometry.PathCore.Qface c l) -
+              if 0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s then
+                √(HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s)
+              else 0) /
+            2
+@HardSphereB5Lean.realizable : ∀ {X Y s : ℝ},
+  0 < X →
+    X < 1 →
+      0 < Y →
+        Y < 1 →
+          0 < HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s →
+            ∃ c, HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s
+@HardSphereB5Lean.retained_vertex_count : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s ≠ 0 → ∑ l, HardSphereB5.Lean.Geometry.PathCore.nRet c l = 4
+@HardSphereB5Lean.sliver_incidence : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s < 0 →
+      (∀ (l : Fin 4),
+          HardSphereB5.Lean.Geometry.PathCore.nRet c l =
+            if
+                0 < HardSphereB5.Lean.Geometry.PathCore.Qpoly X Y s l ∧
+                  HardSphereB5.Lean.Geometry.PathCore.Apoly X Y s l < 0 then
+              2
+            else 0) ∧
+        ∑ l, HardSphereB5.Lean.Geometry.PathCore.nRet c l = 4 ∧
+          ∃ i j,
+            i ≠ j ∧
+              HardSphereB5.Lean.Geometry.PathCore.isCommon c i j ∧
+                ∀ (m : Fin 4),
+                  ∑ l ∈ Finset.univ.erase m, HardSphereB5.Lean.Geometry.PathCore.nRet c l =
+                    if m = i ∨ m = j then 4 else 2
+@HardSphereB5Lean.sliver_lens_covered : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s < 0 →
+      ∀ (i j : Fin 4),
+        i ≠ j →
+          HardSphereB5.Lean.Geometry.PathCore.isCommon c i j →
+            HardSphereB5.Lean.Geometry.PathCore.body c {i, j} ⊆
+              Metric.closedBall (c (HardSphereB5.Lean.Geometry.PathCore.oth1 i j)) 1 ∪
+                Metric.closedBall (c (HardSphereB5.Lean.Geometry.PathCore.oth2 i j)) 1
+@HardSphereB5Lean.sliver_patch_valuation : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s < 0 →
+      ∀ (i j : Fin 4),
+        i ≠ j →
+          HardSphereB5.Lean.Geometry.PathCore.isCommon c i j →
+            ∀ (m : Fin 4),
+              HardSphereB5.Lean.Geometry.PathCore.pArea c m Finset.univ =
+                  HardSphereB5.Lean.Geometry.PathCore.pArea c m {i, j, HardSphereB5.Lean.Geometry.PathCore.oth1 i j} +
+                      HardSphereB5.Lean.Geometry.PathCore.pArea c m
+                        {i, j, HardSphereB5.Lean.Geometry.PathCore.oth2 i j} -
+                    HardSphereB5.Lean.Geometry.PathCore.pArea c m {i, j} ∧
+                HardSphereB5.Lean.Geometry.PathCore.pMoment c m Finset.univ =
+                  HardSphereB5.Lean.Geometry.PathCore.pMoment c m {i, j, HardSphereB5.Lean.Geometry.PathCore.oth1 i j} +
+                      HardSphereB5.Lean.Geometry.PathCore.pMoment c m
+                        {i, j, HardSphereB5.Lean.Geometry.PathCore.oth2 i j} -
+                    HardSphereB5.Lean.Geometry.PathCore.pMoment c m {i, j}
+@HardSphereB5Lean.sliver_table : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s < 0 →
+      (s < 1 →
+          Y < X →
+            (HardSphereB5.Lean.Geometry.PathCore.nRet c 3, HardSphereB5.Lean.Geometry.PathCore.nRet c 2,
+                  HardSphereB5.Lean.Geometry.PathCore.nRet c 1, HardSphereB5.Lean.Geometry.PathCore.nRet c 0) =
+                (2, 0, 2, 0) ∧
+              HardSphereB5.Lean.Geometry.PathCore.isCommon c 0 2) ∧
+        (s < 1 →
+            X < Y →
+              (HardSphereB5.Lean.Geometry.PathCore.nRet c 3, HardSphereB5.Lean.Geometry.PathCore.nRet c 2,
+                    HardSphereB5.Lean.Geometry.PathCore.nRet c 1, HardSphereB5.Lean.Geometry.PathCore.nRet c 0) =
+                  (0, 2, 0, 2) ∧
+                HardSphereB5.Lean.Geometry.PathCore.isCommon c 1 3) ∧
+          (1 < s →
+            (HardSphereB5.Lean.Geometry.PathCore.nRet c 3, HardSphereB5.Lean.Geometry.PathCore.nRet c 2,
+                  HardSphereB5.Lean.Geometry.PathCore.nRet c 1, HardSphereB5.Lean.Geometry.PathCore.nRet c 0) =
+                (0, 0, 2, 2) ∧
+              HardSphereB5.Lean.Geometry.PathCore.isCommon c 2 3)
+@HardSphereB5Lean.sliver_volume : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s < 0 →
+      ∀ (i j : Fin 4),
+        i ≠ j →
+          HardSphereB5.Lean.Geometry.PathCore.isCommon c i j →
+            HardSphereB5.Lean.Geometry.PathCore.vol c Finset.univ =
+              HardSphereB5.Lean.Geometry.PathCore.vol c {i, j, HardSphereB5.Lean.Geometry.PathCore.oth1 i j} +
+                  HardSphereB5.Lean.Geometry.PathCore.vol c {i, j, HardSphereB5.Lean.Geometry.PathCore.oth2 i j} -
+                HardSphereB5.Lean.Geometry.PathCore.V2 (dist (c i) (c j))
+HardSphereB5Lean.support_factor_identities : ∀ (X Y : ℝ),
+  0 < X →
+    X < 1 →
+      0 < Y →
+        Y < 1 →
+          HardSphereB5.Lean.Geometry.PathCore.a0 X Y ^ 2 - HardSphereB5.Lean.Geometry.PathCore.b0 X Y ^ 2 =
+              (1 - X) * (1 - Y) + X * (1 - Y) ^ 2 + Y * (1 - X) ^ 2 ∧
+            (3 - HardSphereB5.Lean.Geometry.PathCore.a0 X Y) ^ 2 - HardSphereB5.Lean.Geometry.PathCore.b0 X Y ^ 2 =
+              (1 - X) * (4 - X * Y) + X * (1 - Y) * (4 - Y)
+@HardSphereB5Lean.tetrahedron_metric : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    0 < s ∧
+      s < 3 ∧
+        AffineIndependent ℝ c ∧
+          (∀ (i j k : Fin 4), i ≠ j → i ≠ k → j ≠ k → 0 < HardSphereB5.Lean.Geometry.PathCore.Deltaf c i j k) ∧
+            HardSphereB5.Lean.Geometry.PathCore.det3 (c 1 - c 0) (c 2 - c 0) (c 3 - c 0) ^ 2 =
+              HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s / 4
+@HardSphereB5Lean.triple_patch_area : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∀ (i j k : Fin 4),
+      i ≠ j →
+        i ≠ k →
+          j ≠ k →
+            HardSphereB5.Lean.Geometry.PathCore.pArea c i {i, j, k} =
+              2 * Real.pi - 2 * HardSphereB5.Lean.Geometry.PathCore.gammaA c i j k -
+                  √(HardSphereB5.Lean.Geometry.PathCore.q c i j) * HardSphereB5.Lean.Geometry.PathCore.betaA c i j k -
+                √(HardSphereB5.Lean.Geometry.PathCore.q c i k) * HardSphereB5.Lean.Geometry.PathCore.betaA c i k j
+@HardSphereB5Lean.triple_patch_moment : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∀ (i j k : Fin 4),
+      i ≠ j →
+        i ≠ k →
+          j ≠ k →
+            HardSphereB5.Lean.Geometry.PathCore.pMoment c i {i, j, k} =
+              ((1 - HardSphereB5.Lean.Geometry.PathCore.q c i j / 4) / √(HardSphereB5.Lean.Geometry.PathCore.q c i j) *
+                      HardSphereB5.Lean.Geometry.PathCore.betaA c i j k) •
+                    (c j - c i) +
+                  ((1 - HardSphereB5.Lean.Geometry.PathCore.q c i k / 4) /
+                        √(HardSphereB5.Lean.Geometry.PathCore.q c i k) *
+                      HardSphereB5.Lean.Geometry.PathCore.betaA c i k j) •
+                    (c k - c i) +
+                (√(HardSphereB5.Lean.Geometry.PathCore.Qf c i j k) /
+                    HardSphereB5.Lean.Geometry.PathCore.Deltaf c i j k) •
+                  HardSphereB5.Lean.Geometry.PathCore.cross (c j - c i - (c k - c i))
+                    (HardSphereB5.Lean.Geometry.PathCore.cross (c j - c i) (c k - c i))
+@HardSphereB5Lean.triple_patch_moment_scalar : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∀ (i j k : Fin 4),
+      i ≠ j →
+        i ≠ k →
+          j ≠ k →
+            ∀ (cs : HardSphereB5.Lean.Pt),
+              inner ℝ (cs - c i) (HardSphereB5.Lean.Geometry.PathCore.pMoment c i {i, j, k}) =
+                (1 - HardSphereB5.Lean.Geometry.PathCore.q c i j / 4) * inner ℝ (cs - c i) (c j - c i) *
+                        HardSphereB5.Lean.Geometry.PathCore.betaA c i j k /
+                      √(HardSphereB5.Lean.Geometry.PathCore.q c i j) +
+                    (1 - HardSphereB5.Lean.Geometry.PathCore.q c i k / 4) * inner ℝ (cs - c i) (c k - c i) *
+                        HardSphereB5.Lean.Geometry.PathCore.betaA c i k j /
+                      √(HardSphereB5.Lean.Geometry.PathCore.q c i k) +
+                  √(HardSphereB5.Lean.Geometry.PathCore.Qf c i j k) *
+                      ((HardSphereB5.Lean.Geometry.PathCore.q c i j - HardSphereB5.Lean.Geometry.PathCore.q c i k -
+                            HardSphereB5.Lean.Geometry.PathCore.q c j k) *
+                          inner ℝ (cs - c i) (c j - c i) -
+                        (HardSphereB5.Lean.Geometry.PathCore.q c i j - HardSphereB5.Lean.Geometry.PathCore.q c i k +
+                            HardSphereB5.Lean.Geometry.PathCore.q c j k) *
+                          inner ℝ (cs - c i) (c k - c i)) /
+                    (2 * HardSphereB5.Lean.Geometry.PathCore.Deltaf c i j k)
+@HardSphereB5Lean.triple_retention_test : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∀ (i j k l : Fin 4),
+      i ≠ j →
+        i ≠ k →
+          i ≠ l →
+            j ≠ k →
+              j ≠ l →
+                k ≠ l →
+                  ∀ (ε : ℝ),
+                    ε = 1 ∨ ε = -1 →
+                      dist (HardSphereB5.Lean.Geometry.PathCore.triplePoint c i j k ε) (c l) ^ 2 - 1 =
+                        HardSphereB5.Lean.Geometry.PathCore.q c i l -
+                            2 * inner ℝ (c l - c i) (HardSphereB5.Lean.Geometry.PathCore.faceCircRel c i j k) -
+                          ε * 4 * √(HardSphereB5.Lean.Geometry.PathCore.Qf c i j k) /
+                              HardSphereB5.Lean.Geometry.PathCore.Deltaf c i j k *
+                            HardSphereB5.Lean.Geometry.PathCore.det3 (c j - c i) (c k - c i) (c l - c i)
+HardSphereB5Lean.volume_continuous : Continuous fun c => HardSphereB5.Lean.Geometry.PathCore.vol c Finset.univ
+HardSphereB5Lean.walls_null : MeasureTheory.volume HardSphereB5.Lean.Geometry.PathCore.wallSet = 0
+HardSphereB5Lean.walls_pathMeasure_null : HardSphereB5.Lean.Geometry.PathCore.pathMeasure
+    HardSphereB5.Lean.Geometry.PathCore.wallSet =
+  0
+@HardSphereB5Lean.weighted_apex_coefficient : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.Lapex c 3 0 2 =
+      (2 * Y * s - Y ^ 2 - s ^ 2 + Y + s) / (4 * Y * s - (Y + s - 1) ^ 2)
+HardSphereB5Lean.AB_chain : ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+  HardSphereB5.SphericalCrofton.ABint f = HardSphereB5.SphericalCrofton.Ic f + HardSphereB5.SphericalCrofton.frakB f
+HardSphereB5Lean.Rsame_label_symmetry : ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+  HardSphereB5.SphericalCrofton.Rsame f =
+    2 * ∫ (D : HardSphereB5.Lean.Pt) in HardSphereB5.SphericalCrofton.LamC, HardSphereB5.SphericalCrofton.AAf f D
+HardSphereB5Lean.capInter_isRegularRegionCrofton : ∀ (N : ℕ),
+  0 < N →
+    ∀ (n : Fin N → HardSphereB5.Lean.Pt) (h : Fin N → ℝ),
+      (∀ (m : Fin N), ‖n m‖ = 1) →
+        (∀ (m : Fin N), 0 ≤ h m) →
+          (HardSphereB5.SphericalCrofton.sInterior (⋂ m, SphereGeom.cap (n m) (h m))).Nonempty →
+            HardSphereB5.SphericalCrofton.IsRegularRegionCrofton (⋂ m, SphereGeom.cap (n m) (h m))
+@HardSphereB5Lean.chord_length_integral : ∀ {K : Set HardSphereB5.Lean.Pt},
+  HardSphereB5.SphericalCrofton.IsRegularRegionCrofton K →
+    (SphereGeom.gcIntegral fun G =>
+        if 0 < HardSphereB5.SphericalCrofton.chordLen K G then HardSphereB5.SphericalCrofton.chordLen K G else 0) =
+      Real.pi * HardSphereB5.SphericalCrofton.sArea K
+@HardSphereB5Lean.chord_representation : ∀ {K : Set HardSphereB5.Lean.Pt},
+  HardSphereB5.SphericalCrofton.IsRegularRegionCrofton K →
+    ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+      HardSphereB5.SphericalCrofton.Ff f K =
+        SphereGeom.gcIntegral fun G =>
+          if 0 < HardSphereB5.SphericalCrofton.chordLen K G then
+            HardSphereB5.SphericalCrofton.kK f (HardSphereB5.SphericalCrofton.chordLen K G)
+          else 0
+HardSphereB5Lean.coarea_transport : ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+  HardSphereB5.SphericalCrofton.frakB f =
+    ∫ (p : SphereGeom.E3) in HardSphereB5.SphericalCrofton.FA,
+      ∫ (p' : SphereGeom.E3) in HardSphereB5.SphericalCrofton.FB,
+        if 0 < dist p p' ∧ dist p p' < 1 then
+          HardSphereB5.SphericalCrofton.rhoK f (1 - dist p p' ^ 2 / 2) / dist p p' *
+            HardSphereB5.SphericalCrofton.circInt p p'
+        else 0 ∂SphereGeom.sphereMeasure HardSphereB5.Lean.e ∂SphereGeom.sphereMeasure 0
+@HardSphereB5Lean.crofton_decomposition : ∀ {K : Set HardSphereB5.Lean.Pt},
+  HardSphereB5.SphericalCrofton.IsRegularRegionCrofton K →
+    ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+      HardSphereB5.SphericalCrofton.Ff f K =
+        HardSphereB5.SphericalCrofton.cA f * HardSphereB5.SphericalCrofton.sArea K -
+            HardSphereB5.SphericalCrofton.cP f * HardSphereB5.SphericalCrofton.perim K +
+          HardSphereB5.SphericalCrofton.Rf f K
+HardSphereB5Lean.cross_arc_by_parts : ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+  ∀ D ∈ HardSphereB5.SphericalCrofton.LamC,
+    HardSphereB5.SphericalCrofton.offAxis D →
+      HardSphereB5.SphericalCrofton.Rc ‖D‖ ‖D - HardSphereB5.Lean.e‖ < 1 →
+        HardSphereB5.SphericalCrofton.ABf f D =
+          2 * HardSphereB5.SphericalCrofton.Pprim f (min (HardSphereB5.SphericalCrofton.deltaV D) (Real.pi / 3)) +
+            HardSphereB5.SphericalCrofton.Bf f D
+HardSphereB5Lean.definition_chain : ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+  HardSphereB5.SphericalCrofton.Jnear f =
+    HardSphereB5.SphericalCrofton.ECr f + HardSphereB5.SphericalCrofton.Rsame f + HardSphereB5.SphericalCrofton.ABint f
+HardSphereB5Lean.flat_measure_general : ∀ (K : HardSphereB5.Lean.Pt → HardSphereB5.Lean.Pt → ℝ),
+  MeasureTheory.Integrable (Function.uncurry K)
+      (((SphereGeom.sphereMeasure 0).restrict HardSphereB5.SphericalCrofton.FA).prod
+        ((SphereGeom.sphereMeasure HardSphereB5.Lean.e).restrict HardSphereB5.SphericalCrofton.FB)) →
+    (∀ (R : HardSphereB5.Lean.Pt ≃ₗᵢ[ℝ] HardSphereB5.Lean.Pt),
+        HardSphereB5.SphericalCrofton.IsAxialRotation R →
+          ∀ p ∈ HardSphereB5.SphericalCrofton.FA, ∀ p' ∈ HardSphereB5.SphericalCrofton.FB, K (R p) (R p') = K p p') →
+      ∫ (p : SphereGeom.E3) in HardSphereB5.SphericalCrofton.FA,
+          ∫ (p' : SphereGeom.E3) in HardSphereB5.SphericalCrofton.FB,
+            K p p' ∂SphereGeom.sphereMeasure HardSphereB5.Lean.e ∂SphereGeom.sphereMeasure 0 =
+        Real.pi / 2 *
+          ∫ (v : ℝ × ℝ × ℝ) in HardSphereB5.SphericalCrofton.Dfull,
+            (K (HardSphereB5.SphericalCrofton.pRep v.1)
+                  (HardSphereB5.SphericalCrofton.pRep2 v.2.1 (HardSphereB5.SphericalCrofton.chiPlus v.1 v.2.1 v.2.2)) +
+                K (HardSphereB5.SphericalCrofton.pRep v.1)
+                  (HardSphereB5.SphericalCrofton.pRep2 v.2.1
+                    (-HardSphereB5.SphericalCrofton.chiPlus v.1 v.2.1 v.2.2))) /
+              √(HardSphereB5.SphericalCrofton.Hpoly v.1 v.2.1 v.2.2)
+HardSphereB5Lean.flat_measure_reflection_even : ∀ (K : HardSphereB5.Lean.Pt → HardSphereB5.Lean.Pt → ℝ),
+  MeasureTheory.Integrable (Function.uncurry K)
+      (((SphereGeom.sphereMeasure 0).restrict HardSphereB5.SphericalCrofton.FA).prod
+        ((SphereGeom.sphereMeasure HardSphereB5.Lean.e).restrict HardSphereB5.SphericalCrofton.FB)) →
+    (∀ (R : HardSphereB5.Lean.Pt ≃ₗᵢ[ℝ] HardSphereB5.Lean.Pt),
+        R HardSphereB5.Lean.e = HardSphereB5.Lean.e →
+          ∀ p ∈ HardSphereB5.SphericalCrofton.FA, ∀ p' ∈ HardSphereB5.SphericalCrofton.FB, K (R p) (R p') = K p p') →
+      ∫ (p : SphereGeom.E3) in HardSphereB5.SphericalCrofton.FA,
+          ∫ (p' : SphereGeom.E3) in HardSphereB5.SphericalCrofton.FB,
+            K p p' ∂SphereGeom.sphereMeasure HardSphereB5.Lean.e ∂SphereGeom.sphereMeasure 0 =
+        Real.pi *
+          ∫ (v : ℝ × ℝ × ℝ) in HardSphereB5.SphericalCrofton.Dfull,
+            K (HardSphereB5.SphericalCrofton.pRep v.1)
+                (HardSphereB5.SphericalCrofton.pRep2 v.2.1 (HardSphereB5.SphericalCrofton.chiPlus v.1 v.2.1 v.2.2)) /
+              √(HardSphereB5.SphericalCrofton.Hpoly v.1 v.2.1 v.2.2)
+HardSphereB5Lean.flat_measure_target : ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+  HardSphereB5.SphericalCrofton.frakB f =
+    Real.pi *
+      ∫ (v : ℝ × ℝ × ℝ) in HardSphereB5.SphericalCrofton.Dnear,
+        1 / √(HardSphereB5.SphericalCrofton.Hpoly v.1 v.2.1 v.2.2) *
+            (HardSphereB5.SphericalCrofton.rhoK f (1 - v.2.2 / 2) / √v.2.2) *
+          HardSphereB5.SphericalCrofton.circInt (HardSphereB5.SphericalCrofton.pRep v.1)
+            (HardSphereB5.SphericalCrofton.pRep2 v.2.1 (HardSphereB5.SphericalCrofton.chiPlus v.1 v.2.1 v.2.2))
+@HardSphereB5Lean.hit_mass : ∀ {K : Set HardSphereB5.Lean.Pt},
+  HardSphereB5.SphericalCrofton.IsRegularRegionCrofton K →
+    (SphereGeom.gcIntegral fun G => if 0 < HardSphereB5.SphericalCrofton.chordLen K G then 1 else 0) =
+      HardSphereB5.SphericalCrofton.perim K
+HardSphereB5Lean.literal_crofton_false : ∀ (n : HardSphereB5.Lean.Pt),
+  ‖n‖ = 1 →
+    ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+      HardSphereB5.SphericalCrofton.Ff f (SphereGeom.cap n (Real.cos (Real.pi / 6))) ≠
+        HardSphereB5.SphericalCrofton.cA f *
+              HardSphereB5.SphericalCrofton.sArea (SphereGeom.cap n (Real.cos (Real.pi / 6))) -
+            HardSphereB5.SphericalCrofton.cP f *
+              HardSphereB5.SphericalCrofton.perim (SphereGeom.cap n (Real.cos (Real.pi / 6))) +
+          HardSphereB5.SphericalCrofton.RfAll f (SphereGeom.cap n (Real.cos (Real.pi / 6)))
+@HardSphereB5Lean.literal_remainder_excess : ∀ {K : Set HardSphereB5.Lean.Pt},
+  HardSphereB5.SphericalCrofton.IsRegularRegionCrofton K →
+    ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+      HardSphereB5.SphericalCrofton.RfAll f K =
+        HardSphereB5.SphericalCrofton.Rf f K +
+          HardSphereB5.SphericalCrofton.bK f * (2 * Real.pi - HardSphereB5.SphericalCrofton.perim K)
+HardSphereB5Lean.sigma_support : ∀ D ∈ HardSphereB5.SphericalCrofton.LamC,
+  HardSphereB5.SphericalCrofton.offAxis D →
+    (HardSphereB5.SphericalCrofton.Rc ‖D‖ ‖D - HardSphereB5.Lean.e‖ < 1 →
+        0 < HardSphereB5.SphericalCrofton.sArea (HardSphereB5.SphericalCrofton.SigmaD D) ∧
+          ∃ V W, V ≠ W ∧ HardSphereB5.SphericalCrofton.vertsD D = {V, W}) ∧
+      (HardSphereB5.SphericalCrofton.Rc ‖D‖ ‖D - HardSphereB5.Lean.e‖ = 1 →
+          ∃ V, HardSphereB5.SphericalCrofton.SigmaD D = {V}) ∧
+        (1 < HardSphereB5.SphericalCrofton.Rc ‖D‖ ‖D - HardSphereB5.Lean.e‖ →
+          HardSphereB5.SphericalCrofton.SigmaD D = ∅)
+HardSphereB5Lean.spherical_remainder_split : ∀ (f : HardSphereB5.SphericalCrofton.Kern),
+  ∀ D ∈ HardSphereB5.SphericalCrofton.LamC,
+    HardSphereB5.SphericalCrofton.Rf f (HardSphereB5.SphericalCrofton.SigmaD D) =
+      HardSphereB5.SphericalCrofton.AAf f D + HardSphereB5.SphericalCrofton.BBf f D +
+        HardSphereB5.SphericalCrofton.ABf f D
+@HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_area : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt}
+  {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s →
+      ∀ (i : Fin 4),
+        HardSphereB5.Lean.Geometry.PathCore.pArea c i Finset.univ =
+          (-Real.pi +
+              1 / 2 *
+                ∑ l,
+                  if l ≠ i then
+                    HardSphereB5.Lean.Geometry.PathCore.pArea c i (HardSphereB5.Lean.Geometry.PathCore.faceSet l)
+                  else 0) +
+            1 / 2 * ∑ j, if j ≠ i then dist (c i) (c j) * HardSphereB5.Lean.Geometry.PathCore.phiE c i j else 0
+@HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_moment : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt}
+  {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s →
+      ∀ (i : Fin 4),
+        HardSphereB5.Lean.Geometry.PathCore.pMoment c i Finset.univ =
+          (((1 / 2) •
+                ∑ l,
+                  if l ≠ i then
+                    HardSphereB5.Lean.Geometry.PathCore.pMoment c i (HardSphereB5.Lean.Geometry.PathCore.faceSet l)
+                  else 0) -
+              (1 / 2) •
+                ∑ j,
+                  if j ≠ i then
+                    ((1 - HardSphereB5.Lean.Geometry.PathCore.q c i j / 4) /
+                          √(HardSphereB5.Lean.Geometry.PathCore.q c i j) *
+                        HardSphereB5.Lean.Geometry.PathCore.phiE c i j) •
+                      (c j - c i)
+                  else 0) +
+            ∑ l, if l ≠ i then HardSphereB5.Lean.Geometry.PathCore.apexTerm c i l else 0
+@HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_volume : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s →
+      HardSphereB5.Lean.Geometry.PathCore.vol c Finset.univ =
+        (1 / 2 * ∑ l, HardSphereB5.Lean.Geometry.PathCore.vol c (HardSphereB5.Lean.Geometry.PathCore.faceSet l) -
+              4 * Real.pi / 3 +
+            1 / 2 *
+              ∑ i,
+                ∑ j,
+                  if i < j then
+                    HardSphereB5.Lean.Geometry.PathCore.g (dist (c i) (c j)) *
+                      HardSphereB5.Lean.Geometry.PathCore.phiE c i j
+                  else 0) -
+          √(HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s) / 12
+HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_near_volume_inventory : HardSphereB5.Lean.Geometry.PathCore.Kcap =
+  2 * HardSphereB5.Lean.Geometry.PathCore.Vadj + 2 * HardSphereB5.Lean.Geometry.PathCore.Vnon +
+            HardSphereB5.Lean.Geometry.PathCore.Ccap +
+          HardSphereB5.Lean.Geometry.PathCore.Dcap +
+        2 * HardSphereB5.Lean.Geometry.PathCore.Eadj +
+      2 * HardSphereB5.Lean.Geometry.PathCore.Enon +
+    ∑ i, ∑ j, if i < j then HardSphereB5.Lean.Geometry.PathCore.nearPairArc i j else 0
+@HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_patch : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt}
+  {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s ≠ 0 →
+      ∀ (i : Fin 4),
+        (HardSphereB5.Lean.Geometry.PathCore.pArea c i Finset.univ =
+            (2 * Real.pi -
+                ∑ l,
+                  if l ≠ i then
+                    ↑(HardSphereB5.Lean.Geometry.PathCore.nRet c l) *
+                      HardSphereB5.Lean.Geometry.PathCore.gammaA c i (HardSphereB5.Lean.Geometry.PathCore.oth1 i l)
+                        (HardSphereB5.Lean.Geometry.PathCore.oth2 i l)
+                  else 0) -
+              1 / 2 * ∑ j, if j ≠ i then dist (c i) (c j) * HardSphereB5.Lean.Geometry.PathCore.ell c i j else 0) ∧
+          HardSphereB5.Lean.Geometry.PathCore.pMoment c i Finset.univ =
+            (((1 / 2) •
+                  ∑ j,
+                    if j ≠ i then
+                      ((1 - HardSphereB5.Lean.Geometry.PathCore.q c i j / 4) / dist (c i) (c j) *
+                          HardSphereB5.Lean.Geometry.PathCore.ell c i j) •
+                        (c j - c i)
+                    else 0) +
+                ∑ l,
+                  if l ≠ i then
+                    (↑(HardSphereB5.Lean.Geometry.PathCore.nRet c l) *
+                          √(HardSphereB5.Lean.Geometry.PathCore.Qface c l) /
+                        (2 *
+                          HardSphereB5.Lean.Geometry.PathCore.Deltaf c i (HardSphereB5.Lean.Geometry.PathCore.oth1 i l)
+                            (HardSphereB5.Lean.Geometry.PathCore.oth2 i l))) •
+                      HardSphereB5.Lean.Geometry.PathCore.endTerm c i l
+                  else 0) +
+              if 0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s then
+                ∑ l, if l ≠ i then HardSphereB5.Lean.Geometry.PathCore.apexTerm c i l else 0
+              else 0
+@HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_volume : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt}
+  {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s ≠ 0 →
+      HardSphereB5.Lean.Geometry.PathCore.vol c Finset.univ =
+        (8 * Real.pi / 3 -
+                1 / 3 *
+                  ∑ l,
+                    ↑(HardSphereB5.Lean.Geometry.PathCore.nRet c l) * HardSphereB5.Lean.Geometry.PathCore.sigmaF c l -
+              1 / 2 *
+                ∑ i,
+                  ∑ j,
+                    if i < j then
+                      HardSphereB5.Lean.Geometry.PathCore.g (dist (c i) (c j)) *
+                        HardSphereB5.Lean.Geometry.PathCore.ell c i j
+                    else 0) +
+            1 / 12 *
+              ∑ l, ↑(HardSphereB5.Lean.Geometry.PathCore.nRet c l) * √(HardSphereB5.Lean.Geometry.PathCore.Qface c l) -
+          if 0 < HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s then
+            √(HardSphereB5.Lean.Geometry.PathCore.Hpoly X Y s) / 12
+          else 0
+@HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_raw_endpoint_volume : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt}
+  {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s ≠ 0 →
+      ∀
+        (D :
+          (e : HardSphereB5.Lean.Geometry.PathCore.PairIndex) →
+            HardSphereB5.Lean.Geometry.PathCore.PairArcDecomposition c (↑e).1 (↑e).2),
+        HardSphereB5.Lean.Geometry.PathCore.vol c Finset.univ =
+          (8 * Real.pi / 3 -
+                1 / 3 *
+                  ∑ l,
+                    ↑(HardSphereB5.Lean.Geometry.PathCore.nRet c l) * HardSphereB5.Lean.Geometry.PathCore.sigmaF c l -
+              1 / 2 *
+                ∑ i,
+                  ∑ j,
+                    if i < j then
+                      HardSphereB5.Lean.Geometry.PathCore.g (dist (c i) (c j)) *
+                        HardSphereB5.Lean.Geometry.PathCore.ell c i j
+                    else 0) +
+            HardSphereB5.Lean.Geometry.PathCore.rawEndpointSum c D / 6
+@HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_weighted_channel_normal_form : ∀
+  {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    HardSphereB5.Lean.Geometry.PathCore.P4poly X Y s ≠ 0 →
+      ∀ (h ε : ℝ),
+        h = HardSphereB5.Lean.Geometry.PathCore.channelH2 Y ∧ ε = -1 ∨
+            h = HardSphereB5.Lean.Geometry.PathCore.channelH3 X Y s ∧ ε = 1 →
+          HardSphereB5.Lean.Geometry.PathCore.channelDensity c X h ε =
+            (4 * Real.pi * HardSphereB5.Lean.Geometry.PathCore.hcWeight X * h -
+                  ∑ i,
+                    ∑ j,
+                      if i < j then
+                        HardSphereB5.Lean.Geometry.PathCore.channelArcCoeff c X h ε i j *
+                          HardSphereB5.Lean.Geometry.PathCore.ell c i j
+                      else 0) +
+                HardSphereB5.Lean.Geometry.PathCore.channelCorner c X h +
+              HardSphereB5.Lean.Geometry.PathCore.channelEndpoint c X Y s h ε
+HardSphereB5Lean.pair_replacement_patch_ae : ∀ (x : Fin 3 → HardSphereB5.Lean.Pt),
+  AffineIndependent ℝ x →
+    dist (x 1) (x 2) ^ 2 < 4 →
+      dist (x 0) (x 1) ^ 2 ≤ 1 →
+        dist (x 0) (x 2) ^ 2 ≤ 1 →
+          dist (x 0) (x 1) ^ 2 ≤ dist (x 1) (x 2) ^ 2 ∧ dist (x 0) (x 2) ^ 2 ≤ dist (x 1) (x 2) ^ 2 →
+            HardSphereB5.Lean.Geometry.PathCore.QT (dist (x 1) (x 2) ^ 2) (dist (x 1) (x 0) ^ 2)
+                  (dist (x 2) (x 0) ^ 2) ≤
+                0 →
+              ∀ (i : Fin 3),
+                ⋂ j, Metric.closedBall (x j) 1 =ᵐ[SphereGeom.sphereMeasure (x i)]
+                  if i = 0 then ∅ else Metric.closedBall (x 1) 1 ∩ Metric.closedBall (x 2) 1
+@HardSphereB5Lean.realizable_classification : ∀ {c : Fin 4 → HardSphereB5.Lean.Pt} {X Y s : ℝ},
+  HardSphereB5.Lean.Geometry.PathCore.IsPathConfig c X Y s →
+    ∃ φ, ∀ (i : Fin 4), φ (c i) = HardSphereB5.Lean.Geometry.PathCore.canonicalCenters X Y s i
+'HardSphereB5Lean.lensVolFormula' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.threeBallVolume' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.pathFaceQ_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.kernel_constants' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.kernel_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.cutoff_order_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.phiK_nonneg' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.primitive_explicit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.rho_rational' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.sigma_axis_cases' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_as_spherical' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.circInt_isometry_invariant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.rho_squared_distance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.Aface_eq_poly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.Qface_eq_poly' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.adjacent_unit_halfwidths' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.apex_position_contraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.bulk_apex_anchor' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.bulk_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.circumcenter_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.circumradius_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.common_pair_halfwidth_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.coordinate_realization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.divergence_path' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.equal_sliver_halves' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.face_circumcenter_identities' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.face_circumradius_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.labeled_patch_continuous_distinct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.midpoint_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_arc_inventory' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_common_pair_acute_obtuse' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_dihedral_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_face_inventory' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_moving_point_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_pair23_halfwidths_acute' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_selector_certificates' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_selector_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_selector_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_selector_sliver_order' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.near_selector_wall_bulk' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.no_near_sliver_on_diagonal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.no_sliver_at_s_one' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.obtuse_point_values' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.obtuse_sentence_counterexample' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.pair_arc_normalizer' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.pair_replacement_body' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.pair_replacement_conditional' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.pair_replacement_unrestricted_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.pair_width' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.positive_volume_active_patches' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.raw_arc_decompositions_exist' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.raw_endpoint_contraction' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.realizable' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.retained_vertex_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.sliver_incidence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.sliver_lens_covered' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.sliver_patch_valuation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.sliver_table' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.sliver_volume' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.support_factor_identities' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.tetrahedron_metric' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.triple_patch_area' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.triple_patch_moment' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.triple_patch_moment_scalar' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.triple_retention_test' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.volume_continuous' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.walls_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.walls_pathMeasure_null' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.weighted_apex_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.AB_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.Rsame_label_symmetry' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.capInter_isRegularRegionCrofton' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.chord_length_integral' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.chord_representation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.coarea_transport' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.crofton_decomposition' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.cross_arc_by_parts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.definition_chain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.flat_measure_general' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.flat_measure_reflection_even' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.flat_measure_target' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.hit_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.literal_crofton_false' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.literal_remainder_excess' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.sigma_support' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.spherical_remainder_split' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_area' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_moment' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_volume' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_near_volume_inventory' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_patch' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_volume' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_raw_endpoint_volume' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_weighted_channel_normal_form' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'HardSphereB5Lean.pair_replacement_patch_ae' depends on axioms: [propext, Classical.choice, Quot.sound]
+'HardSphereB5Lean.realizable_classification' depends on axioms: [propext, Classical.choice, Quot.sound]

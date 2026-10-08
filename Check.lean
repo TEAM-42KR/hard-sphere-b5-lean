@@ -1,0 +1,194 @@
+import HardSphereB5Lean.Heads
+
+#check @HardSphereB5Lean.lensVolFormula
+#check @HardSphereB5Lean.threeBallVolume
+#check @HardSphereB5Lean.pathFaceQ_pos
+#check @HardSphereB5Lean.kernel_constants
+#check @HardSphereB5Lean.kernel_split
+#check @HardSphereB5Lean.cutoff_order_two
+#check @HardSphereB5Lean.phiK_nonneg
+#check @HardSphereB5Lean.primitive_explicit
+#check @HardSphereB5Lean.rho_rational
+#check @HardSphereB5Lean.sigma_axis_cases
+#check @HardSphereB5Lean.near_as_spherical
+#check @HardSphereB5Lean.circInt_isometry_invariant
+#check @HardSphereB5Lean.rho_squared_distance
+#check @HardSphereB5Lean.Aface_eq_poly
+#check @HardSphereB5Lean.Qface_eq_poly
+#check @HardSphereB5Lean.adjacent_unit_halfwidths
+#check @HardSphereB5Lean.apex_position_contraction
+#check @HardSphereB5Lean.bulk_apex_anchor
+#check @HardSphereB5Lean.bulk_incidence
+#check @HardSphereB5Lean.circumcenter_unique
+#check @HardSphereB5Lean.circumradius_sq
+#check @HardSphereB5Lean.common_pair_halfwidth_sum
+#check @HardSphereB5Lean.coordinate_realization
+#check @HardSphereB5Lean.divergence_path
+#check @HardSphereB5Lean.equal_sliver_halves
+#check @HardSphereB5Lean.face_circumcenter_identities
+#check @HardSphereB5Lean.face_circumradius_certificate
+#check @HardSphereB5Lean.labeled_patch_continuous_distinct
+#check @HardSphereB5Lean.midpoint_values
+#check @HardSphereB5Lean.near_arc_inventory
+#check @HardSphereB5Lean.near_common_pair_acute_obtuse
+#check @HardSphereB5Lean.near_dihedral_identity
+#check @HardSphereB5Lean.near_face_inventory
+#check @HardSphereB5Lean.near_moving_point_width
+#check @HardSphereB5Lean.near_pair23_halfwidths_acute
+#check @HardSphereB5Lean.near_selector_certificates
+#check @HardSphereB5Lean.near_selector_counts
+#check @HardSphereB5Lean.near_selector_factorization
+#check @HardSphereB5Lean.near_selector_sliver_order
+#check @HardSphereB5Lean.near_selector_wall_bulk
+#check @HardSphereB5Lean.no_near_sliver_on_diagonal
+#check @HardSphereB5Lean.no_sliver_at_s_one
+#check @HardSphereB5Lean.obtuse_point_values
+#check @HardSphereB5Lean.obtuse_sentence_counterexample
+#check @HardSphereB5Lean.pair_arc_normalizer
+#check @HardSphereB5Lean.pair_replacement_body
+#check @HardSphereB5Lean.pair_replacement_conditional
+#check @HardSphereB5Lean.pair_replacement_unrestricted_false
+#check @HardSphereB5Lean.pair_width
+#check @HardSphereB5Lean.positive_volume_active_patches
+#check @HardSphereB5Lean.raw_arc_decompositions_exist
+#check @HardSphereB5Lean.raw_endpoint_contraction
+#check @HardSphereB5Lean.realizable
+#check @HardSphereB5Lean.retained_vertex_count
+#check @HardSphereB5Lean.sliver_incidence
+#check @HardSphereB5Lean.sliver_lens_covered
+#check @HardSphereB5Lean.sliver_patch_valuation
+#check @HardSphereB5Lean.sliver_table
+#check @HardSphereB5Lean.sliver_volume
+#check @HardSphereB5Lean.support_factor_identities
+#check @HardSphereB5Lean.tetrahedron_metric
+#check @HardSphereB5Lean.triple_patch_area
+#check @HardSphereB5Lean.triple_patch_moment
+#check @HardSphereB5Lean.triple_patch_moment_scalar
+#check @HardSphereB5Lean.triple_retention_test
+#check @HardSphereB5Lean.volume_continuous
+#check @HardSphereB5Lean.walls_null
+#check @HardSphereB5Lean.walls_pathMeasure_null
+#check @HardSphereB5Lean.weighted_apex_coefficient
+#check @HardSphereB5Lean.AB_chain
+#check @HardSphereB5Lean.Rsame_label_symmetry
+#check @HardSphereB5Lean.capInter_isRegularRegionCrofton
+#check @HardSphereB5Lean.chord_length_integral
+#check @HardSphereB5Lean.chord_representation
+#check @HardSphereB5Lean.coarea_transport
+#check @HardSphereB5Lean.crofton_decomposition
+#check @HardSphereB5Lean.cross_arc_by_parts
+#check @HardSphereB5Lean.definition_chain
+#check @HardSphereB5Lean.flat_measure_general
+#check @HardSphereB5Lean.flat_measure_reflection_even
+#check @HardSphereB5Lean.flat_measure_target
+#check @HardSphereB5Lean.hit_mass
+#check @HardSphereB5Lean.literal_crofton_false
+#check @HardSphereB5Lean.literal_remainder_excess
+#check @HardSphereB5Lean.sigma_support
+#check @HardSphereB5Lean.spherical_remainder_split
+#check @HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_area
+#check @HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_moment
+#check @HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_volume
+#check @HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_near_volume_inventory
+#check @HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_patch
+#check @HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_volume
+#check @HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_raw_endpoint_volume
+#check @HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_weighted_channel_normal_form
+#check @HardSphereB5Lean.pair_replacement_patch_ae
+#check @HardSphereB5Lean.realizable_classification
+#print axioms HardSphereB5Lean.lensVolFormula
+#print axioms HardSphereB5Lean.threeBallVolume
+#print axioms HardSphereB5Lean.pathFaceQ_pos
+#print axioms HardSphereB5Lean.kernel_constants
+#print axioms HardSphereB5Lean.kernel_split
+#print axioms HardSphereB5Lean.cutoff_order_two
+#print axioms HardSphereB5Lean.phiK_nonneg
+#print axioms HardSphereB5Lean.primitive_explicit
+#print axioms HardSphereB5Lean.rho_rational
+#print axioms HardSphereB5Lean.sigma_axis_cases
+#print axioms HardSphereB5Lean.near_as_spherical
+#print axioms HardSphereB5Lean.circInt_isometry_invariant
+#print axioms HardSphereB5Lean.rho_squared_distance
+#print axioms HardSphereB5Lean.Aface_eq_poly
+#print axioms HardSphereB5Lean.Qface_eq_poly
+#print axioms HardSphereB5Lean.adjacent_unit_halfwidths
+#print axioms HardSphereB5Lean.apex_position_contraction
+#print axioms HardSphereB5Lean.bulk_apex_anchor
+#print axioms HardSphereB5Lean.bulk_incidence
+#print axioms HardSphereB5Lean.circumcenter_unique
+#print axioms HardSphereB5Lean.circumradius_sq
+#print axioms HardSphereB5Lean.common_pair_halfwidth_sum
+#print axioms HardSphereB5Lean.coordinate_realization
+#print axioms HardSphereB5Lean.divergence_path
+#print axioms HardSphereB5Lean.equal_sliver_halves
+#print axioms HardSphereB5Lean.face_circumcenter_identities
+#print axioms HardSphereB5Lean.face_circumradius_certificate
+#print axioms HardSphereB5Lean.labeled_patch_continuous_distinct
+#print axioms HardSphereB5Lean.midpoint_values
+#print axioms HardSphereB5Lean.near_arc_inventory
+#print axioms HardSphereB5Lean.near_common_pair_acute_obtuse
+#print axioms HardSphereB5Lean.near_dihedral_identity
+#print axioms HardSphereB5Lean.near_face_inventory
+#print axioms HardSphereB5Lean.near_moving_point_width
+#print axioms HardSphereB5Lean.near_pair23_halfwidths_acute
+#print axioms HardSphereB5Lean.near_selector_certificates
+#print axioms HardSphereB5Lean.near_selector_counts
+#print axioms HardSphereB5Lean.near_selector_factorization
+#print axioms HardSphereB5Lean.near_selector_sliver_order
+#print axioms HardSphereB5Lean.near_selector_wall_bulk
+#print axioms HardSphereB5Lean.no_near_sliver_on_diagonal
+#print axioms HardSphereB5Lean.no_sliver_at_s_one
+#print axioms HardSphereB5Lean.obtuse_point_values
+#print axioms HardSphereB5Lean.obtuse_sentence_counterexample
+#print axioms HardSphereB5Lean.pair_arc_normalizer
+#print axioms HardSphereB5Lean.pair_replacement_body
+#print axioms HardSphereB5Lean.pair_replacement_conditional
+#print axioms HardSphereB5Lean.pair_replacement_unrestricted_false
+#print axioms HardSphereB5Lean.pair_width
+#print axioms HardSphereB5Lean.positive_volume_active_patches
+#print axioms HardSphereB5Lean.raw_arc_decompositions_exist
+#print axioms HardSphereB5Lean.raw_endpoint_contraction
+#print axioms HardSphereB5Lean.realizable
+#print axioms HardSphereB5Lean.retained_vertex_count
+#print axioms HardSphereB5Lean.sliver_incidence
+#print axioms HardSphereB5Lean.sliver_lens_covered
+#print axioms HardSphereB5Lean.sliver_patch_valuation
+#print axioms HardSphereB5Lean.sliver_table
+#print axioms HardSphereB5Lean.sliver_volume
+#print axioms HardSphereB5Lean.support_factor_identities
+#print axioms HardSphereB5Lean.tetrahedron_metric
+#print axioms HardSphereB5Lean.triple_patch_area
+#print axioms HardSphereB5Lean.triple_patch_moment
+#print axioms HardSphereB5Lean.triple_patch_moment_scalar
+#print axioms HardSphereB5Lean.triple_retention_test
+#print axioms HardSphereB5Lean.volume_continuous
+#print axioms HardSphereB5Lean.walls_null
+#print axioms HardSphereB5Lean.walls_pathMeasure_null
+#print axioms HardSphereB5Lean.weighted_apex_coefficient
+#print axioms HardSphereB5Lean.AB_chain
+#print axioms HardSphereB5Lean.Rsame_label_symmetry
+#print axioms HardSphereB5Lean.capInter_isRegularRegionCrofton
+#print axioms HardSphereB5Lean.chord_length_integral
+#print axioms HardSphereB5Lean.chord_representation
+#print axioms HardSphereB5Lean.coarea_transport
+#print axioms HardSphereB5Lean.crofton_decomposition
+#print axioms HardSphereB5Lean.cross_arc_by_parts
+#print axioms HardSphereB5Lean.definition_chain
+#print axioms HardSphereB5Lean.flat_measure_general
+#print axioms HardSphereB5Lean.flat_measure_reflection_even
+#print axioms HardSphereB5Lean.flat_measure_target
+#print axioms HardSphereB5Lean.hit_mass
+#print axioms HardSphereB5Lean.literal_crofton_false
+#print axioms HardSphereB5Lean.literal_remainder_excess
+#print axioms HardSphereB5Lean.sigma_support
+#print axioms HardSphereB5Lean.spherical_remainder_split
+#print axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_area
+#print axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_moment
+#print axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_volume
+#print axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_near_volume_inventory
+#print axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_patch
+#print axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_volume
+#print axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_raw_endpoint_volume
+#print axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_weighted_channel_normal_form
+#print axioms HardSphereB5Lean.pair_replacement_patch_ae
+#print axioms HardSphereB5Lean.realizable_classification

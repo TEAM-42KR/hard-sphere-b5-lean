@@ -1,0 +1,294 @@
+modules built (lines '[k/n] Built'): 1095
+error lines: 0
+'declaration uses sorry' warnings: 96
+warning: Challenge.lean:21:8: declaration uses `sorry`
+warning: Challenge.lean:30:8: declaration uses `sorry`
+warning: Challenge.lean:57:8: declaration uses `sorry`
+warning: Challenge.lean:76:8: declaration uses `sorry`
+warning: Challenge.lean:88:8: declaration uses `sorry`
+warning: Challenge.lean:99:8: declaration uses `sorry`
+warning: Challenge.lean:111:8: declaration uses `sorry`
+warning: Challenge.lean:122:8: declaration uses `sorry`
+warning: Challenge.lean:134:8: declaration uses `sorry`
+warning: Challenge.lean:145:8: declaration uses `sorry`
+warning: Challenge.lean:159:8: declaration uses `sorry`
+warning: Challenge.lean:170:8: declaration uses `sorry`
+warning: Challenge.lean:181:8: declaration uses `sorry`
+warning: Challenge.lean:192:8: declaration uses `sorry`
+warning: Challenge.lean:203:8: declaration uses `sorry`
+warning: Challenge.lean:215:8: declaration uses `sorry`
+warning: Challenge.lean:227:8: declaration uses `sorry`
+warning: Challenge.lean:239:8: declaration uses `sorry`
+warning: Challenge.lean:251:8: declaration uses `sorry`
+warning: Challenge.lean:262:8: declaration uses `sorry`
+warning: Challenge.lean:273:8: declaration uses `sorry`
+warning: Challenge.lean:285:8: declaration uses `sorry`
+warning: Challenge.lean:297:8: declaration uses `sorry`
+warning: Challenge.lean:311:8: declaration uses `sorry`
+warning: Challenge.lean:324:8: declaration uses `sorry`
+warning: Challenge.lean:336:8: declaration uses `sorry`
+warning: Challenge.lean:351:8: declaration uses `sorry`
+warning: Challenge.lean:364:8: declaration uses `sorry`
+warning: Challenge.lean:377:8: declaration uses `sorry`
+warning: Challenge.lean:391:8: declaration uses `sorry`
+warning: Challenge.lean:406:8: declaration uses `sorry`
+warning: Challenge.lean:419:8: declaration uses `sorry`
+warning: Challenge.lean:432:8: declaration uses `sorry`
+warning: Challenge.lean:443:8: declaration uses `sorry`
+warning: Challenge.lean:460:8: declaration uses `sorry`
+warning: Challenge.lean:472:8: declaration uses `sorry`
+warning: Challenge.lean:489:8: declaration uses `sorry`
+warning: Challenge.lean:504:8: declaration uses `sorry`
+warning: Challenge.lean:517:8: declaration uses `sorry`
+warning: Challenge.lean:529:8: declaration uses `sorry`
+warning: Challenge.lean:540:8: declaration uses `sorry`
+warning: Challenge.lean:551:8: declaration uses `sorry`
+warning: Challenge.lean:562:8: declaration uses `sorry`
+warning: Challenge.lean:573:8: declaration uses `sorry`
+warning: Challenge.lean:586:8: declaration uses `sorry`
+warning: Challenge.lean:599:8: declaration uses `sorry`
+warning: Challenge.lean:613:8: declaration uses `sorry`
+warning: Challenge.lean:627:8: declaration uses `sorry`
+warning: Challenge.lean:641:8: declaration uses `sorry`
+warning: Challenge.lean:655:8: declaration uses `sorry`
+warning: Challenge.lean:668:8: declaration uses `sorry`
+warning: Challenge.lean:680:8: declaration uses `sorry`
+warning: Challenge.lean:693:8: declaration uses `sorry`
+warning: Challenge.lean:705:8: declaration uses `sorry`
+warning: Challenge.lean:716:8: declaration uses `sorry`
+warning: Challenge.lean:731:8: declaration uses `sorry`
+warning: Challenge.lean:742:8: declaration uses `sorry`
+warning: Challenge.lean:757:8: declaration uses `sorry`
+warning: Challenge.lean:770:8: declaration uses `sorry`
+warning: Challenge.lean:782:8: declaration uses `sorry`
+warning: Challenge.lean:794:8: declaration uses `sorry`
+warning: Challenge.lean:807:8: declaration uses `sorry`
+warning: Challenge.lean:820:8: declaration uses `sorry`
+warning: Challenge.lean:836:8: declaration uses `sorry`
+warning: Challenge.lean:854:8: declaration uses `sorry`
+warning: Challenge.lean:870:8: declaration uses `sorry`
+warning: Challenge.lean:881:8: declaration uses `sorry`
+warning: Challenge.lean:893:8: declaration uses `sorry`
+warning: Challenge.lean:905:8: declaration uses `sorry`
+warning: Challenge.lean:917:8: declaration uses `sorry`
+warning: Challenge.lean:928:8: declaration uses `sorry`
+warning: Challenge.lean:939:8: declaration uses `sorry`
+warning: Challenge.lean:952:8: declaration uses `sorry`
+warning: Challenge.lean:963:8: declaration uses `sorry`
+warning: Challenge.lean:974:8: declaration uses `sorry`
+warning: Challenge.lean:988:8: declaration uses `sorry`
+warning: Challenge.lean:999:8: declaration uses `sorry`
+warning: Challenge.lean:1011:8: declaration uses `sorry`
+warning: Challenge.lean:1022:8: declaration uses `sorry`
+warning: Challenge.lean:1039:8: declaration uses `sorry`
+warning: Challenge.lean:1055:8: declaration uses `sorry`
+warning: Challenge.lean:1068:8: declaration uses `sorry`
+warning: Challenge.lean:1079:8: declaration uses `sorry`
+warning: Challenge.lean:1092:8: declaration uses `sorry`
+warning: Challenge.lean:1103:8: declaration uses `sorry`
+warning: Challenge.lean:1116:8: declaration uses `sorry`
+warning: Challenge.lean:1126:8: declaration uses `sorry`
+warning: Challenge.lean:1138:8: declaration uses `sorry`
+warning: Challenge.lean:1153:8: declaration uses `sorry`
+warning: Challenge.lean:1167:8: declaration uses `sorry`
+warning: Challenge.lean:1180:8: declaration uses `sorry`
+warning: Challenge.lean:1201:8: declaration uses `sorry`
+warning: Challenge.lean:1216:8: declaration uses `sorry`
+warning: Challenge.lean:1230:8: declaration uses `sorry`
+warning: Challenge.lean:1245:8: declaration uses `sorry`
+warning: Challenge.lean:1261:8: declaration uses `sorry`
+axiom check lines (AUDIT axioms): 192
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.lensVolFormula: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.threeBallVolume: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.pathFaceQ_pos: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.kernel_constants: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.kernel_split: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.cutoff_order_two: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.phiK_nonneg: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.primitive_explicit: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.rho_rational: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.sigma_axis_cases: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_as_spherical: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.circInt_isometry_invariant: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.rho_squared_distance: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.Aface_eq_poly: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.Qface_eq_poly: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.adjacent_unit_halfwidths: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.apex_position_contraction: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.bulk_apex_anchor: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.bulk_incidence: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.circumcenter_unique: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.circumradius_sq: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.common_pair_halfwidth_sum: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.coordinate_realization: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.divergence_path: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.equal_sliver_halves: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.face_circumcenter_identities: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.face_circumradius_certificate: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.labeled_patch_continuous_distinct: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.midpoint_values: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_arc_inventory: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_common_pair_acute_obtuse: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_dihedral_identity: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_face_inventory: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_moving_point_width: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_pair23_halfwidths_acute: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_selector_certificates: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_selector_counts: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_selector_factorization: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_selector_sliver_order: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.near_selector_wall_bulk: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.no_near_sliver_on_diagonal: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.no_sliver_at_s_one: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.obtuse_point_values: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.obtuse_sentence_counterexample: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.pair_arc_normalizer: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.pair_replacement_body: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.pair_replacement_conditional: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.pair_replacement_unrestricted_false: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.pair_width: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.positive_volume_active_patches: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.raw_arc_decompositions_exist: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.raw_endpoint_contraction: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.realizable: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.retained_vertex_count: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.sliver_incidence: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.sliver_lens_covered: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.sliver_patch_valuation: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.sliver_table: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.sliver_volume: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.support_factor_identities: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.tetrahedron_metric: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.triple_patch_area: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.triple_patch_moment: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.triple_patch_moment_scalar: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.triple_retention_test: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.volume_continuous: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.walls_null: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.walls_pathMeasure_null: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.weighted_apex_coefficient: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.AB_chain: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.Rsame_label_symmetry: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.capInter_isRegularRegionCrofton: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.chord_length_integral: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.chord_representation: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.coarea_transport: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.crofton_decomposition: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.cross_arc_by_parts: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.definition_chain: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.flat_measure_general: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.flat_measure_reflection_even: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.flat_measure_target: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.hit_mass: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.literal_crofton_false: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.literal_remainder_excess: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.sigma_support: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.spherical_remainder_split: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_area: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_patch_moment: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_bulk_volume: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_near_volume_inventory: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_patch: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_normal_form_volume: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_raw_endpoint_volume: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.HardSphereB5_Lean_Geometry_PathCore_weighted_channel_normal_form: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.pair_replacement_patch_ae: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5Lean.realizable_classification: [propext,
+info: Audit.lean:231:0: AUDIT axioms lensVolFormula: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms threeBallVolume: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms pathFaceQ_pos: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms kernel_constants: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms kernel_split: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms cutoff_order_two: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms phiK_nonneg: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms primitive_explicit: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms rho_rational: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms sigma_axis_cases: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_as_spherical: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms circInt_isometry_invariant: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms rho_squared_distance: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms Aface_eq_poly: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms Qface_eq_poly: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms adjacent_unit_halfwidths: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms apex_position_contraction: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms bulk_apex_anchor: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms bulk_incidence: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms circumcenter_unique: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms circumradius_sq: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms common_pair_halfwidth_sum: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms coordinate_realization: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms divergence_path: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms equal_sliver_halves: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms face_circumcenter_identities: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms face_circumradius_certificate: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms labeled_patch_continuous_distinct: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms midpoint_values: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_arc_inventory: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_common_pair_acute_obtuse: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_dihedral_identity: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_face_inventory: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_moving_point_width: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_pair23_halfwidths_acute: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_selector_certificates: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_selector_counts: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_selector_factorization: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_selector_sliver_order: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms near_selector_wall_bulk: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms no_near_sliver_on_diagonal: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms no_sliver_at_s_one: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms obtuse_point_values: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms obtuse_sentence_counterexample: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms pair_arc_normalizer: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms pair_replacement_body: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms pair_replacement_conditional: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms pair_replacement_unrestricted_false: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms pair_width: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms positive_volume_active_patches: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms raw_arc_decompositions_exist: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms raw_endpoint_contraction: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms realizable: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms retained_vertex_count: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms sliver_incidence: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms sliver_lens_covered: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms sliver_patch_valuation: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms sliver_table: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms sliver_volume: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms support_factor_identities: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms tetrahedron_metric: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms triple_patch_area: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms triple_patch_moment: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms triple_patch_moment_scalar: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms triple_retention_test: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms volume_continuous: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms walls_null: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms walls_pathMeasure_null: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms weighted_apex_coefficient: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms AB_chain: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms Rsame_label_symmetry: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms capInter_isRegularRegionCrofton: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms chord_length_integral: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms chord_representation: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms coarea_transport: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms crofton_decomposition: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms cross_arc_by_parts: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms definition_chain: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms flat_measure_general: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms flat_measure_reflection_even: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms flat_measure_target: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms hit_mass: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms literal_crofton_false: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms literal_remainder_excess: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms sigma_support: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms spherical_remainder_split: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5_Lean_Geometry_PathCore_bulk_patch_area: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5_Lean_Geometry_PathCore_bulk_patch_moment: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5_Lean_Geometry_PathCore_bulk_volume: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5_Lean_Geometry_PathCore_near_volume_inventory: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5_Lean_Geometry_PathCore_normal_form_patch: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5_Lean_Geometry_PathCore_normal_form_volume: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5_Lean_Geometry_PathCore_raw_endpoint_volume: [propext,
+info: Audit.lean:231:0: AUDIT axioms HardSphereB5_Lean_Geometry_PathCore_weighted_channel_normal_form: [propext,
+info: Audit.lean:231:0: AUDIT axioms pair_replacement_patch_ae: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT axioms realizable_classification: [propext, Classical.choice, Quot.sound] (sorryAx allowed: false)
+info: Audit.lean:231:0: AUDIT placeholders (0): []
+last line: Build completed successfully (9804 jobs).

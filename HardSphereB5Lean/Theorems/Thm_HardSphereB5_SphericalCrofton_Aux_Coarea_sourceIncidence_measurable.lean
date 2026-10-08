@@ -1,0 +1,12 @@
+import HardSphereB5Lean.Proofs.Proof_HardSphereB5_SphericalCrofton_Aux_Coarea_sourceIncidence_measurable
+import HardSphereB5Lean.Definitions.Def_HardSphereB5_SphericalCrofton_Aux_Coarea_sourceIncidence
+import HardSphereB5Lean.Definitions.Def_HardSphereB5_SphericalCrofton_Aux_Coarea_sourceCenter
+set_option autoImplicit false
+open MeasureTheory SphereGeom HardSphereB5.SphericalCrofton HardSphereB5.SphericalCrofton.Aux.Coarea
+open HardSphereB5.Lean (Pt e)
+open HardSphereB5.SphericalCrofton.Aux.MovingArc
+open scoped Classical
+
+theorem HardSphereB5.SphericalCrofton.Aux.Coarea.sourceIncidence_measurable :
+    MeasurableSet sourceIncidence :=
+  @proof_HardSphereB5_SphericalCrofton_Aux_Coarea_sourceIncidence_measurable

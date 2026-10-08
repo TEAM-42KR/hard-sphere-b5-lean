@@ -1,0 +1,11 @@
+import HardSphereB5Lean.Proofs.Proof_HardSphereB5_SphericalCrofton_Aux_Endpoint_pair_pole_transport
+import HardSphereB5Lean.Definitions.Def_HardSphereB5_SphericalCrofton_Aux_Endpoint_boundaryTau
+set_option autoImplicit false
+open MeasureTheory Real SphereGeom HardSphereB5.SphericalCrofton HardSphereB5.SphericalCrofton.Aux.Endpoint
+open HardSphereB5.Lean (Pt e)
+open scoped Classical
+
+theorem HardSphereB5.SphericalCrofton.Aux.Endpoint.pair_pole_transport :
+    ∀ (D : Pt) (hD : D ∈ LamC)
+    (hK : IsRegularRegionCrofton (SigmaD D)), (weightedPairMu D).map pairPole = dOmega.restrict (hitPoleSet D) :=
+  @proof_HardSphereB5_SphericalCrofton_Aux_Endpoint_pair_pole_transport
