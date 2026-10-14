@@ -1,6 +1,6 @@
 # Correspondence between the manuscript and the Lean statements
 
-Generated from the facts file (sha256 `990f69f554c049de0a9bdc164e84e8b91ebe6ad3665d7feb4606bdc647379ef5`; its human-readable rendering has sha256 `cef1e0c76008fa27bf6c9f9989e89ff06a0cbc89d61a42d47c0d6a5377172603`).
+Bound to manuscript version 1.0.0, 15 October 2026; the cited source-fragment SHA256 digests and paper DOIs are in `MANUSCRIPT_BINDING.json`.
 
 Each row lists one of the 96 proved Lean statements and compares it with a cited manuscript passage, or identifies an auxiliary statement for which no corresponding printed sentence is claimed. The relation concerns the compared mathematical content rather than the complete printed wording: *same* means matching content up to notation; *Lean stronger* means a broader proved scope or a more explicit conclusion; *Lean weaker* means that only part of the cited content is covered; *no printed counterpart* means an auxiliary statement with no corresponding printed sentence. A relation other than *same* means the Lean statement does not guarantee the printed wording. The table concerns these geometric lemmas only; it does not assert that the main theorems, the value of b5, or the evaluation of the iterated integrals are formally verified.
 

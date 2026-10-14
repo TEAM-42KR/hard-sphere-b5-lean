@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "Please cite the hard-sphere paper and its supplementary material."
+title: "The fifth virial coefficient of hard spheres: partial Lean formalization"
+version: 1.0.0
+date-released: 2026-10-15
+license: MIT
+authors:
+  - family-names: Na
+    given-names: Sungsoo
+    orcid: "https://orcid.org/0009-0005-5257-3374"
+doi: 10.5281/zenodo.23364650
+repository-code: "https://github.com/TEAM-42KR/hard-sphere-b5-lean"

@@ -1,5 +1,7 @@
 # The fifth virial coefficient of hard spheres: Lean 4 formalization of geometric lemmas
 
+This repository is a partial formalization of 96 geometric statements from the hard-sphere paper; the fifth virial coefficient b5 itself is not formalized.
+
 This repository contains machine-checked proofs, in Lean 4 with Mathlib, of 96 geometric lemmas used in the
 paper *The fifth virial coefficient of hard spheres* by Sungsoo Na and its companion
 *The fifth virial coefficient of hard spheres: complete proofs and computations*.
@@ -103,6 +105,6 @@ MIT (see `LICENSE`).
 ## Citation
 
 If you use this repository, please cite the paper: Sungsoo Na, *The fifth virial coefficient of hard spheres*,
-DOI: to be added on publication.
+DOI: 10.5281/zenodo.23364646. The companion paper DOI is 10.5281/zenodo.23364648; the source archive is supplied with Supplement DOI 10.5281/zenodo.23364650.
 
 Assisted by AI.

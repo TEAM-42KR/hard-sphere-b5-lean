@@ -1,0 +1,17 @@
+{
+  "manuscript_version": "1.0.0",
+  "publication_date": "2026-10-15",
+  "manuscript_dois": {
+    "A": "10.5281/zenodo.23364646",
+    "B": "10.5281/zenodo.23364648"
+  },
+  "source_fragments": {
+    "A/frag/s2.tex": "a6ae738b630fcfdee4a6007bff916271f2768ecf76ce3b114f1f6251f6611628",
+    "A/frag/s4.tex": "505ec327863a62efb174bc13631fbfe9761a94514a773888f709137e606ab1e1",
+    "B/frag/s5.tex": "957037baa9482c20fbbbd77be06db22fced82883fb4c8e5737ed8db980d2a3cc",
+    "B/frag/s7.tex": "d57000cf74099956415d497161af6fce82ba640fec9c9cb864732d4d73134048",
+    "B/frag/s8.tex": "e6f57f22213d46293e9789802b9f246fbbd8037f7b85f21aa83fd633a6e868ba"
+  },
+  "scope": "The table concerns the cited mathematical passages in these source fragments. The main theorem and the value of b5 are not formalized.",
+  "rows": 96
+}
